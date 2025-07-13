@@ -1,0 +1,158 @@
+{
+  "$ref": "#/definitions/buying-guides",
+  "definitions": {
+    "buying-guides": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "publishDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "updateDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "author": {
+          "type": "string",
+          "default": "Salt Life Detail Team"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "best-of",
+            "comparison",
+            "budget-guide",
+            "seasonal-guide"
+          ]
+        },
+        "priceRange": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "fall",
+            "winter",
+            "year-round"
+          ]
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "brand": {
+                "type": "string"
+              },
+              "price": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "number"
+              },
+              "affiliateLink": {
+                "type": "string",
+                "format": "uri"
+              },
+              "pros": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cons": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "bestFor": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "brand",
+              "price",
+              "rating",
+              "affiliateLink",
+              "pros",
+              "cons",
+              "bestFor"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "seoKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "heroImage": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "publishDate",
+        "category",
+        "products",
+        "heroImage"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

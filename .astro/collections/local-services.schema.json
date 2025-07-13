@@ -1,0 +1,136 @@
+{
+  "$ref": "#/definitions/local-services",
+  "definitions": {
+    "local-services": {
+      "type": "object",
+      "properties": {
+        "businessName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "detailing-service",
+            "supply-store",
+            "marina",
+            "repair-service"
+          ]
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "default": "FL"
+        },
+        "zipCode": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "hours": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "day": {
+                "type": "string"
+              },
+              "open": {
+                "type": "string"
+              },
+              "close": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "day",
+              "open",
+              "close"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "priceRange": {
+          "type": "string",
+          "enum": [
+            "$",
+            "$$",
+            "$$$",
+            "$$$$"
+          ]
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "reviewCount": {
+          "type": "number"
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "verified": {
+          "type": "boolean",
+          "default": false
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "businessName",
+        "description",
+        "category",
+        "address",
+        "city",
+        "zipCode",
+        "phone",
+        "hours",
+        "services",
+        "priceRange",
+        "rating",
+        "reviewCount"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

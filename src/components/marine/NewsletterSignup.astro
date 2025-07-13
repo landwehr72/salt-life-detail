@@ -1,0 +1,63 @@
+---
+// src/components/marine/NewsletterSignup.astro
+---
+
+<section class="py-16 bg-blue-600">
+  <div class="max-w-4xl mx-auto px-8 text-center">
+    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        Stay Ahead of the Tide
+      </h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Get weekly marine detailing tips, product reviews, and exclusive Florida boating insights delivered to your inbox.
+      </p>
+
+      <!-- Newsletter form -->
+      <form class="max-w-md mx-auto mb-6">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input 
+            type="email" 
+            name="email"
+            placeholder="Enter your email address" 
+            required
+            class="flex-1 px-4 py-3 rounded-lg border-0 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+          />
+          <button 
+            type="submit"
+            class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+          >
+            Subscribe
+          </button>
+        </div>
+      </form>
+
+      <!-- Benefits -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-blue-100">
+        <div class="flex items-center justify-center gap-2">
+          <svg class="size-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Weekly Tips</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <svg class="size-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Exclusive Reviews</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <svg class="size-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>No Spam Ever</span>
+        </div>
+      </div>
+
+      <!-- Privacy note -->
+      <p class="text-xs text-blue-200 mt-4">
+        We respect your privacy. Unsubscribe at any time. See our 
+        <a href="/privacy-policy" class="underline hover:no-underline">privacy policy</a>.
+      </p>
+    </div>
+  </div>
+</section>

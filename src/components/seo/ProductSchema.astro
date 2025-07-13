@@ -1,0 +1,205 @@
+---
+// src/components/seo/ProductSchema.astro
+export interface Props {
+  productName: string;
+  brand: string;
+  description: string;
+  rating: number;
+  reviewCount?: number;
+  price: string;
+  availability?: 'InStock' | 'OutOfStock' | 'PreOrder';
+  image: string;
+  sku?: string;
+  affiliateLink: string;
+  pros: string[];
+  cons: string[];
+  reviewAuthor?: string;
+  reviewDate?: string;
+  category?: string;
+  specifications?: {
+    size?: string;
+    weight?: string;
+    coverage?: string;
+    application?: string;
+  };
+  testingDetails?: {
+    testDuration?: string;
+    testConditions?: string;
+    boatType?: string;
+  };
+}
+
+const {
+  productName,
+  brand,
+  description,
+  rating,
+  reviewCount = 1,
+  price,
+  availability = 'InStock',
+  image,
+  sku,
+  affiliateLink,
+  pros,
+  cons,
+  reviewAuthor = 'Salt Life Detail Team',
+  reviewDate = new Date().toISOString(),
+  category = 'Marine Detailing Products',
+  specifications,
+  testingDetails
+} = Astro.props;
+
+const fullImageUrl = new URL(image, Astro.site).toString();
+const currentUrl = Astro.url.toString();
+const cleanPrice = price.replace(/[$,]/g, '');
+const productId = sku || productName.toLowerCase().replace(/\s+/g, '-');
+
+// Create comprehensive review body
+const reviewBody = `Comprehensive review of ${productName} after extensive testing in Southwest Florida's marine environment. 
+
+Strengths: ${pros.join(', ')}. 
+
+Areas for improvement: ${cons.join(', ')}. 
+
+${testingDetails ? `Testing was conducted over ${testingDetails.testDuration} in ${testingDetails.testConditions} on ${testingDetails.boatType}.` : ''}
+
+Overall rating: ${rating}/5 stars based on real-world marine detailing performance.`;
+---
+
+<!-- Product Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": `${currentUrl}#product`,
+  "name": `${productName}`,
+  "brand": {
+    "@type": "Brand",
+    "name": `${brand}`
+  },
+  "description": `${description}`,
+  "image": [
+    `${fullImageUrl}`
+  ],
+  "sku": `${productId}`,
+  "mpn": `${productId}`,
+  "category": `${category}`,
+  "offers": {
+    "@type": "Offer",
+    "price": `${cleanPrice}`,
+    "priceCurrency": "USD",
+    "availability": `https://schema.org/${availability}`,
+    "url": `${affiliateLink}`,
+    "seller": {
+      "@type": "Organization",
+      "name": "Marine Detail Supply"
+    },
+    "priceValidUntil": "${new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": ${rating},
+    "bestRating": 5,
+    "worstRating": 1,
+    "ratingCount": ${reviewCount}
+  },
+  "review": {
+    "@type": "Review",
+    "@id": `${currentUrl}#review`,
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": ${rating},
+      "bestRating": 5,
+      "worstRating": 1
+    },
+    "author": {
+      "@type": "Person",
+      "name": `${reviewAuthor}`
+    },
+    "datePublished": `${reviewDate}`,
+    "reviewBody": `${reviewBody}`,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Salt Life Detail",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://saltlifedetail.com/images/logo.png"
+      }
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${currentUrl}`
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Tested In",
+      "value": "Southwest Florida Marine Environment"
+    },
+    {
+      "@type": "PropertyValue", 
+      "name": "Suitable For",
+      "value": "Saltwater and Freshwater Boats"
+    }${specifications?.size ? `,
+    {
+      "@type": "PropertyValue",
+      "name": "Size",
+      "value": "${specifications.size}"
+    }` : ''}${specifications?.coverage ? `,
+    {
+      "@type": "PropertyValue",
+      "name": "Coverage",
+      "value": "${specifications.coverage}"
+    }` : ''}
+  ]
+}
+</script>
+
+<!-- Article Schema for the Review -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "@id": `${currentUrl}#article`,
+  "headline": `${productName} Review: Expert Marine Detailing Analysis`,
+  "description": `${description}`,
+  "image": `${fullImageUrl}`,
+  "datePublished": `${reviewDate}`,
+  "dateModified": `${reviewDate}`,
+  "author": {
+    "@type": "Person",
+    "name": `${reviewAuthor}`,
+    "jobTitle": "Marine Detailing Expert",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Salt Life Detail"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Salt Life Detail",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://saltlifedetail.com/images/logo.png",
+      "width": 400,
+      "height": 400
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${currentUrl}`
+  },
+  "itemReviewed": {
+    "@type": "Product",
+    "@id": `${currentUrl}#product`
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": ${rating},
+    "bestRating": 5,
+    "worstRating": 1
+  },
+  "reviewBody": `${reviewBody}`
+}
+</script>

@@ -1,0 +1,139 @@
+---
+// src/components/seo/ArticleSchema.astro
+export interface Props {
+  title: string;
+  description: string;
+  author?: string;
+  publishDate: string;
+  updateDate?: string;
+  image: string;
+  category?: string;
+  tags?: string[];
+  readTime?: string;
+  difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
+}
+
+const {
+  title,
+  description,
+  author = 'Salt Life Detail Team',
+  publishDate,
+  updateDate,
+  image,
+  category = 'Marine Detailing Guide',
+  tags = [],
+  readTime,
+  difficulty
+} = Astro.props;
+
+const fullImageUrl = new URL(image, Astro.site).toString();
+const currentUrl = Astro.url.toString();
+---
+
+<!-- Article Schema for Guides -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": `${currentUrl}#article`,
+  "headline": `${title}`,
+  "description": `${description}`,
+  "image": {
+    "@type": "ImageObject",
+    "url": `${fullImageUrl}`,
+    "width": 1200,
+    "height": 630
+  },
+  "datePublished": `${publishDate}`,
+  "dateModified": `${updateDate || publishDate}`,
+  "author": {
+    "@type": "Person",
+    "name": `${author}`,
+    "jobTitle": "Marine Detailing Expert",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Salt Life Detail"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Salt Life Detail",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://saltlifedetail.com/images/logo.png",
+      "width": 400,
+      "height": 400
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Estero",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${currentUrl}`
+  },
+  "articleSection": `${category}`,
+  "keywords": "${tags.join(', ')}",
+  "about": {
+    "@type": "Thing",
+    "name": "Marine Detailing"
+  }${readTime ? `,
+  "timeRequired": "PT${readTime.replace(/\D/g, '')}M"` : ''}${difficulty ? `,
+  "educationalLevel": "${difficulty}"` : ''},
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Boat Owners"
+  },
+  "inLanguage": "en-US",
+  "isAccessibleForFree": true
+}
+</script>
+
+<!-- How-To Schema for Tutorial Articles -->
+{readTime && (
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": `${title}`,
+  "description": `${description}`,
+  "image": {
+    "@type": "ImageObject",
+    "url": `${fullImageUrl}`
+  },
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "totalTime": "PT${readTime.replace(/\D/g, '')}M",
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "Marine detailing products"
+    },
+    {
+      "@type": "HowToSupply", 
+      "name": "Microfiber cloths"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Fresh water access"
+    }
+  ],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Foam cannon or spray bottle"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "Professional microfiber cloths"
+    }
+  ]
+}
+</script>
+)}

@@ -1,0 +1,188 @@
+{
+  "$ref": "#/definitions/product-reviews",
+  "definitions": {
+    "product-reviews": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "publishDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "updateDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "author": {
+          "type": "string",
+          "default": "Salt Life Detail Team"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "cleaners",
+            "waxes-sealants",
+            "tools-equipment",
+            "interior-care",
+            "specialty"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "productName": {
+          "type": "string"
+        },
+        "brand": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "affiliateLink": {
+          "type": "string",
+          "format": "uri"
+        },
+        "inStock": {
+          "type": "boolean",
+          "default": true
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "pros": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "specifications": {
+          "type": "object",
+          "properties": {
+            "size": {
+              "type": "string"
+            },
+            "weight": {
+              "type": "string"
+            },
+            "coverage": {
+              "type": "string"
+            },
+            "application": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "testingDetails": {
+          "type": "object",
+          "properties": {
+            "testDuration": {
+              "type": "string"
+            },
+            "testConditions": {
+              "type": "string"
+            },
+            "boatType": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "testDuration",
+            "testConditions",
+            "boatType"
+          ],
+          "additionalProperties": false
+        },
+        "seoKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "relatedProducts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "heroImage": {
+          "type": "string"
+        },
+        "gallery": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "publishDate",
+        "category",
+        "productName",
+        "brand",
+        "price",
+        "rating",
+        "affiliateLink",
+        "pros",
+        "cons",
+        "heroImage"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

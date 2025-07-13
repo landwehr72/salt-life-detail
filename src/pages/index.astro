@@ -1,23 +1,202 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Hero from "@/components/landing/Hero.astro";
-import LogoCloud from "@/components/landing/LogoCloud.astro";
-import Work from "@/components/landing/Work.astro";
-import Howitworks from "@/components/landing/Howitworks.astro";
-import Services from "@/components/landing/Services.astro";
-import Testimonials from "@/components/landing/Testimonials.astro";
-import Pricing from "@/components/landing/Pricing.astro";
-import Faq from "@/components/landing/Faq.astro";
-import Cta from "@/components/global/Cta.astro";
 ---
+
 <BaseLayout>
-  <Hero />
-  <LogoCloud />
-  <Work />
-  <Howitworks />
-  <Services />
-  <Testimonials />
-  <Pricing />
-  <Faq />
-  <Cta />
+  <!-- Hero Section -->
+  <section class="bg-white py-24">
+    <div class="max-w-5xl mx-auto px-8">
+      <div class="text-center">
+        <!-- Subtle badge -->
+        <div class="inline-flex items-center border border-gray-200 bg-gray-50 px-4 py-2 rounded-full text-sm text-gray-600 mb-12">
+          <div class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></div>
+          Southwest Florida • Estero Based • Real Testing
+        </div>
+        
+        <!-- Main headline -->
+        <h1 class="text-6xl font-light text-gray-900 mb-8 tracking-tight leading-tight">
+          Marine Detailing<br>
+          <span class="font-normal">Done Right</span>
+        </h1>
+        
+        <!-- Subheadline -->
+        <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+          Honest product reviews and professional guides from a jetski owner who tests everything in Florida's demanding saltwater conditions.
+        </p>
+        
+        <!-- Clean CTA -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <a href="/reviews" class="bg-gray-900 text-white px-8 py-4 text-lg font-medium hover:bg-gray-800 transition-all duration-300 border border-gray-900">
+            Product Reviews
+          </a>
+          <a href="/guides" class="bg-white text-gray-900 px-8 py-4 text-lg font-medium border border-gray-300 hover:border-gray-900 transition-all duration-300">
+            Expert Guides
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal divider -->
+  <div class="border-t border-gray-100"></div>
+
+  <!-- Values Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+        
+        <div class="text-center">
+          <div class="w-1 h-16 bg-gray-900 mx-auto mb-8"></div>
+          <h3 class="text-xl font-medium text-gray-900 mb-4">Tested Locally</h3>
+          <p class="text-gray-600 leading-relaxed font-light">
+            Every product endures months of real-world testing in Southwest Florida's harsh marine environment.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-1 h-16 bg-gray-900 mx-auto mb-8"></div>
+          <h3 class="text-xl font-medium text-gray-900 mb-4">Honest Reviews</h3>
+          <p class="text-gray-600 leading-relaxed font-light">
+            No sugar-coating. Clear pros and cons based on actual performance, not marketing claims.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-1 h-16 bg-gray-900 mx-auto mb-8"></div>
+          <h3 class="text-xl font-medium text-gray-900 mb-4">Expert Knowledge</h3>
+          <p class="text-gray-600 leading-relaxed font-light">
+            Professional techniques and insights gained from years of marine maintenance experience.
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Minimal divider -->
+  <div class="border-t border-gray-100"></div>
+
+  <!-- Featured Products Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      
+      <!-- Section header -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-light text-gray-900 mb-6">Featured Reviews</h2>
+        <p class="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+          Thoroughly tested products that have earned their place in our marine arsenal.
+        </p>
+      </div>
+      
+      <!-- Product grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Product 1 -->
+        <article class="bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300">
+          <div class="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200"></div>
+          <div class="p-8">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">Marine 31 Boat Soap</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-wide">pH Neutral Formula</p>
+              </div>
+              <span class="text-2xl font-light text-gray-900">$24</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+              Six months of testing proved this soap won't strip ceramic coatings while effectively removing saltwater residue.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex">
+                <span class="text-gray-900">★★★★★</span>
+                <span class="text-sm text-gray-500 ml-2">4.8/5</span>
+              </div>
+              <a href="/reviews/marine-31-soap" class="text-sm text-gray-900 hover:text-gray-600 font-medium">Read Review →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300">
+          <div class="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200"></div>
+          <div class="p-8">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">Meguiar's Marine Wax</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-wide">Carnauba Blend</p>
+              </div>
+              <span class="text-2xl font-light text-gray-900">$19</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+              Exceptional durability in Florida sun. Easy application and removal with professional-grade results.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex">
+                <span class="text-gray-900">★★★★☆</span>
+                <span class="text-sm text-gray-500 ml-2">4.7/5</span>
+              </div>
+              <a href="/reviews/meguiars-wax" class="text-sm text-gray-900 hover:text-gray-600 font-medium">Read Review →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300">
+          <div class="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200"></div>
+          <div class="p-8">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">Star brite Microfiber</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-wide">Professional Grade</p>
+              </div>
+              <span class="text-2xl font-light text-gray-900">$29</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+              Ultra-absorbent cloths that deliver streak-free results. Machine washable and lint-free performance.
+            </p>
+            <div class="flex justify-between items-center">
+              <div class="flex">
+                <span class="text-gray-900">★★★★★</span>
+                <span class="text-sm text-gray-500 ml-2">4.9/5</span>
+              </div>
+              <a href="/reviews/starbrite-microfiber" class="text-sm text-gray-900 hover:text-gray-600 font-medium">Read Review →</a>
+            </div>
+          </div>
+        </article>
+        
+      </div>
+      
+      <!-- View all link -->
+      <div class="text-center mt-12">
+        <a href="/reviews" class="inline-flex items-center text-gray-900 hover:text-gray-600 font-medium">
+          View All Reviews 
+          <span class="ml-2">→</span>
+        </a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 bg-gray-900">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl font-light text-white mb-6">Stay Informed</h2>
+      <p class="text-lg text-gray-300 mb-12 font-light max-w-2xl mx-auto">
+        Monthly insights on marine maintenance, product testing results, and seasonal care recommendations.
+      </p>
+      
+      <div class="max-w-md mx-auto">
+        <div class="flex border border-gray-700">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            class="flex-1 px-6 py-4 bg-transparent text-white placeholder-gray-400 border-none focus:outline-none"
+          >
+          <button class="bg-white text-gray-900 px-8 py-4 font-medium hover:bg-gray-100 transition-colors">
+            Subscribe
+          </button>
+        </div>
+        <p class="text-xs text-gray-400 mt-4">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

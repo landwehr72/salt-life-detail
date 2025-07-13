@@ -1,0 +1,222 @@
+---
+// src/pages/local-services/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const serviceCategories = [
+  {
+    name: "Detailing Services",
+    slug: "detailing-services",
+    description: "Professional boat cleaning and detailing",
+    count: 8
+  },
+  {
+    name: "Supply Stores", 
+    slug: "supply-stores",
+    description: "Marine product retailers and distributors",
+    count: 12
+  },
+  {
+    name: "Marinas",
+    slug: "marinas",
+    description: "Full-service marinas with detailing facilities",
+    count: 15
+  },
+  {
+    name: "Mobile Services",
+    slug: "mobile-services", 
+    description: "On-site cleaning and maintenance",
+    count: 6
+  }
+];
+
+const featuredServices = [
+  {
+    name: "Marine Supply Pro",
+    category: "Supply Store",
+    location: "Fort Myers, FL",
+    distance: "12 miles from Estero",
+    rating: 4.9,
+    reviewCount: 47,
+    description: "Premier marine supply store with extensive selection of professional-grade detailing products. Knowledgeable staff and competitive pricing.",
+    services: ["Product Sales", "Expert Advice", "Special Orders", "Bulk Pricing"],
+    contact: {
+      phone: "(239) 555-0123",
+      website: "https://example-marine-supply.com",
+      address: "1234 Marina Drive, Fort Myers, FL 33901"
+    },
+    verified: true,
+    featured: true
+  },
+  {
+    name: "Coastal Marine Detailing",
+    category: "Detailing Service", 
+    location: "Bonita Springs, FL",
+    distance: "8 miles from Estero",
+    rating: 4.8,
+    reviewCount: 32,
+    description: "Full-service mobile marine detailing specializing in high-end vessels. Ceramic coating application and paint correction services.",
+    services: ["Mobile Detailing", "Ceramic Coating", "Paint Correction", "Interior Cleaning"],
+    contact: {
+      phone: "(239) 555-0456",
+      website: "https://example-marine-detailing.com",
+      address: "Bonita Springs, FL (Mobile Service)"
+    },
+    verified: true,
+    featured: true
+  },
+  {
+    name: "Bay View Marina",
+    category: "Marina",
+    location: "Estero, FL", 
+    distance: "3 miles from downtown",
+    rating: 4.7,
+    reviewCount: 89,
+    description: "Full-service marina with on-site detailing services, boat storage, and fuel dock. Convenient location with easy bay access.",
+    services: ["Boat Storage", "Fuel Dock", "Detailing Services", "Maintenance"],
+    contact: {
+      phone: "(239) 555-0789",
+      website: "https://example-marina.com",
+      address: "5678 Bay Road, Estero, FL 33928"
+    },
+    verified: true,
+    featured: true
+  }
+];
+---
+
+<BaseLayout 
+  title="Local Marine Services | Southwest Florida | Salt Life Detail"
+  description="Trusted marine detailing services, supply stores, and marinas in Southwest Florida. Verified local businesses serving Estero, Fort Myers, Naples, and Bonita Springs."
+>
+  <!-- Header Section -->
+  <section class="bg-white py-16 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          Local Marine Services
+        </h1>
+        <p class="text-xl text-gray-600 font-light leading-relaxed">
+          Trusted marine detailing services, supply stores, and marinas in Southwest Florida. Every business is personally vetted and recommended by local boat owners.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Badge -->
+  <section class="py-8 bg-gray-50 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex items-center justify-center">
+        <div class="inline-flex items-center bg-white border border-gray-200 px-6 py-3">
+          <div class="w-2 h-2 bg-gray-900 rounded-full mr-3"></div>
+          <span class="font-medium text-gray-900">Serving Southwest Florida</span>
+          <span class="text-gray-500 ml-3">•</span>
+          <span class="text-gray-600 ml-3 font-light">Estero, Fort Myers, Naples, Bonita Springs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-12 text-center">Browse by Category</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {serviceCategories.map((category) => (
+          <a 
+            href={`/local-services/${category.slug}`}
+            class="bg-white border border-gray-200 p-8 hover:border-gray-300 transition-all duration-300 group text-center"
+          >
+            <div class="w-1 h-12 bg-gray-900 mb-6 mx-auto"></div>
+            <h3 class="text-lg font-medium text-gray-900 mb-3 group-hover:text-gray-700">
+              {category.name}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4 font-light">
+              {category.description}
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-light">
+                {category.count} locations
+              </span>
+              <span class="text-gray-400 group-hover:text-gray-600 transition-colors">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-light text-gray-900 mb-8">Featured Services</h2>
+        
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-gray-50 border border-gray-200 p-12 text-center">
+            <h3 class="text-xl font-medium text-gray-900 mb-4">Coming Soon</h3>
+            <p class="text-gray-600 font-light leading-relaxed mb-6">
+              We're currently building our directory of trusted marine service providers in Southwest Florida. 
+              Local businesses will be featured here after our thorough vetting process.
+            </p>
+            <a 
+              href="/contact?subject=local-service" 
+              class="inline-flex items-center text-gray-900 hover:text-gray-600 font-medium"
+            >
+              Recommend a Business →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Listed Section -->
+  <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl font-light text-gray-900 mb-6">Get Your Business Listed</h2>
+      <p class="text-lg text-gray-600 mb-8 font-light max-w-2xl mx-auto">
+        Are you a marine service provider in Southwest Florida? We'd love to feature quality businesses that serve the local boating community.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-white border border-gray-200 mx-auto mb-4 flex items-center justify-center">
+            <div class="w-6 h-6 bg-gray-900"></div>
+          </div>
+          <h3 class="font-medium text-gray-900 mb-2">Quality Standards</h3>
+          <p class="text-sm text-gray-600 font-light">
+            We personally vet all services
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-12 h-12 bg-white border border-gray-200 mx-auto mb-4 flex items-center justify-center">
+            <div class="w-2 h-2 bg-gray-900 rounded-full"></div>
+          </div>
+          <h3 class="font-medium text-gray-900 mb-2">Local Focus</h3>
+          <p class="text-sm text-gray-600 font-light">
+            Southwest Florida businesses only
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-12 h-12 bg-white border border-gray-200 mx-auto mb-4 flex items-center justify-center">
+            <div class="w-6 h-1 bg-gray-900"></div>
+          </div>
+          <h3 class="font-medium text-gray-900 mb-2">Free Listing</h3>
+          <p class="text-sm text-gray-600 font-light">
+            No cost for basic directory listing
+          </p>
+        </div>
+      </div>
+      
+      <a 
+        href="/contact?subject=local-service" 
+        class="inline-flex items-center bg-gray-900 text-white px-8 py-4 font-medium hover:bg-gray-800 transition-colors"
+      >
+        Submit Your Business
+      </a>
+    </div>
+  </section>
+</BaseLayout>

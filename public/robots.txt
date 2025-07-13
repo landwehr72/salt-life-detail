@@ -1,0 +1,80 @@
+# robots.txt for Salt Life Detail - Marine Detailing Expert Site
+# Optimized for maximum SEO crawling and indexing
+
+User-agent: *
+Allow: /
+
+# Allow all major search engines full access
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot  
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 3
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.well-known/
+Disallow: /api/
+Disallow: /temp/
+Disallow: /draft/
+
+# Disallow low-value pages
+Disallow: /*?print=1
+Disallow: /*?share=
+Disallow: /search?*
+Disallow: /*?utm_*
+
+# Allow important resource directories
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+
+# Sitemaps (multiple for better organization)
+Sitemap: https://saltlifedetail.com/sitemap-index.xml
+Sitemap: https://saltlifedetail.com/sitemap-pages.xml
+Sitemap: https://saltlifedetail.com/sitemap-reviews.xml
+Sitemap: https://saltlifedetail.com/sitemap-guides.xml
+Sitemap: https://saltlifedetail.com/sitemap-local-services.xml
+
+# Crawl delay for aggressive crawlers
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+# Block problematic bots
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: ScreamingFrogSEOSpider
+Disallow: /
+
+User-agent: wget
+Disallow: /
+
+User-agent: curl
+Disallow: /

@@ -1,0 +1,191 @@
+---
+// src/pages/reviews/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categories = [
+  {
+    name: "Cleaners & Soaps",
+    slug: "cleaners",
+    description: "pH-neutral soaps and degreasers for marine surfaces",
+    count: 8
+  },
+  {
+    name: "Waxes & Sealants",
+    slug: "waxes-sealants", 
+    description: "Protection products for gelcoat and fiberglass",
+    count: 12
+  },
+  {
+    name: "Tools & Equipment",
+    slug: "tools-equipment",
+    description: "Professional-grade detailing tools and accessories",
+    count: 15
+  },
+  {
+    name: "Interior Care",
+    slug: "interior-care",
+    description: "Vinyl, leather, and fabric care products",
+    count: 6
+  }
+];
+
+// Sample featured reviews
+const featuredReviews = [
+  {
+    title: "Marine 31 Boat Soap",
+    category: "Cleaners",
+    rating: 4.8,
+    price: "$24.99",
+    excerpt: "Six months of testing proved this pH-neutral soap won't strip ceramic coatings while effectively removing saltwater residue.",
+    slug: "marine-31-boat-soap",
+    featured: true
+  },
+  {
+    title: "Meguiar's Marine Wax",
+    category: "Waxes & Sealants", 
+    rating: 4.7,
+    price: "$19.99",
+    excerpt: "Exceptional durability in Florida sun with easy application and professional-grade results.",
+    slug: "meguiars-marine-wax",
+    featured: true
+  },
+  {
+    title: "Star brite Hull Cleaner",
+    category: "Cleaners",
+    rating: 4.6,
+    price: "$16.99", 
+    excerpt: "Powerful formula removes tough stains and oxidation without damaging gelcoat surfaces.",
+    slug: "starbrite-hull-cleaner",
+    featured: false
+  },
+  {
+    title: "Chemical Guys Marine Snow Foam",
+    category: "Cleaners",
+    rating: 4.5,
+    price: "$22.99",
+    excerpt: "Thick, clingy foam provides excellent dwell time for thorough cleaning of marine surfaces.",
+    slug: "chemical-guys-snow-foam", 
+    featured: false
+  }
+];
+---
+
+<BaseLayout 
+  title="Marine Detailing Product Reviews | Salt Life Detail"
+  description="Honest reviews of marine detailing products tested in Southwest Florida's harsh saltwater conditions. Find the best boat cleaning products for your vessel."
+>
+  <!-- Header Section -->
+  <section class="bg-white py-16 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          Product Reviews
+        </h1>
+        <p class="text-xl text-gray-600 font-light leading-relaxed">
+          Honest, detailed reviews of marine detailing products tested in Southwest Florida's demanding saltwater environment. Every product is personally tested on real boats.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-12 text-center">Browse by Category</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {categories.map((category) => (
+          <a 
+            href={`/reviews/${category.slug}`}
+            class="bg-white border border-gray-200 p-8 hover:border-gray-300 transition-all duration-300 group"
+          >
+            <h3 class="text-lg font-medium text-gray-900 mb-3 group-hover:text-gray-700">
+              {category.name}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4 font-light">
+              {category.description}
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-light">
+                {category.count} reviews
+              </span>
+              <span class="text-gray-400 group-hover:text-gray-600 transition-colors">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Reviews -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="text-3xl font-light text-gray-900">Latest Reviews</h2>
+        <a href="/reviews/all" class="text-gray-600 hover:text-gray-900 font-light">
+          View All →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {featuredReviews.map((review) => (
+          <article class="bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 group">
+            <div class="aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200"></div>
+            <div class="p-8">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="text-xs text-gray-500 uppercase tracking-wide font-light mb-2 block">
+                    {review.category}
+                  </span>
+                  <h3 class="text-xl font-medium text-gray-900 mb-2 group-hover:text-gray-700">
+                    {review.title}
+                  </h3>
+                </div>
+                <span class="text-lg font-light text-gray-900">{review.price}</span>
+              </div>
+              
+              <p class="text-gray-600 text-sm leading-relaxed mb-6 font-light">
+                {review.excerpt}
+              </p>
+              
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <span class="text-gray-900">★★★★★</span>
+                  <span class="text-sm text-gray-500 ml-2 font-light">{review.rating}/5</span>
+                </div>
+                <a 
+                  href={`/reviews/${review.slug}`}
+                  class="text-sm text-gray-900 hover:text-gray-600 font-medium"
+                >
+                  Read Review →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-2xl font-light text-gray-900 mb-4">Stay Updated</h2>
+      <p class="text-gray-600 mb-8 font-light">
+        Get notified when we publish new product reviews and testing results.
+      </p>
+      <div class="max-w-md mx-auto">
+        <div class="flex border border-gray-300">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            class="flex-1 px-4 py-3 border-none focus:outline-none font-light"
+          >
+          <button class="bg-gray-900 text-white px-6 py-3 font-medium hover:bg-gray-800 transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,96 @@
+---
+// MarineHero.astro
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <svg class="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <defs>
+        <pattern id="waves" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M0 10 Q5 5 10 10 T20 10" stroke="currentColor" fill="none" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100" height="100" fill="url(#waves)" />
+    </svg>
+  </div>
+
+  <div class="relative px-8 py-16 max-w-4xl mx-auto">
+    <div class="text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm text-blue-900 bg-blue-200/50 ring-1 ring-blue-300/50 mb-8">
+        <div class="size-2 rounded-full bg-green-500"></div>
+        <span>Serving Southwest Florida Boaters</span>
+      </div>
+
+      <!-- Main headline -->
+      <h1 class="text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+        Keep Your Boat
+        <span class="block text-blue-600">Pristine & Protected</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Expert marine detailing product reviews, step-by-step guides, and local service recommendations from a fellow boat owner in Estero, Florida.
+      </p>
+
+      <!-- Value propositions -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-blue-100">
+          <div class="size-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="size-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Tested by Locals</h3>
+          <p class="text-sm text-gray-600">Real product testing in Florida's harsh marine environment</p>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-blue-100">
+          <div class="size-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="size-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Expert Guides</h3>
+          <p class="text-sm text-gray-600">Step-by-step tutorials for DIY boat maintenance</p>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-blue-100">
+          <div class="size-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="size-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Local Services</h3>
+          <p class="text-sm text-gray-600">Trusted detailing services in Southwest Florida</p>
+        </div>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/reviews" 
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+        >
+          Browse Product Reviews
+          <svg class="ml-2 size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+        <a 
+          href="/guides" 
+          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-xl hover:bg-gray-50 transition-colors duration-200 shadow-lg hover:shadow-xl border border-blue-200"
+        >
+          Read How-To Guides
+        </a>
+      </div>
+
+      <!-- Trust indicator -->
+      <p class="text-sm text-gray-500 mt-8">
+        <span class="font-medium">Trusted by 1000+ boat owners</span> in Southwest Florida
+      </p>
+    </div>
+  </div>
+</section>

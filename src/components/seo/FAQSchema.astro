@@ -1,0 +1,54 @@
+---
+// src/components/seo/FAQSchema.astro
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  faqs: FAQItem[];
+}
+
+const { faqs } = Astro.props;
+
+const faqSchema = faqs.map(faq => ({
+  "@type": "Question",
+  "name": faq.question,
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": faq.answer
+  }
+}));
+---
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": {JSON.stringify(faqSchema)}
+}
+</script>
+
+<!-- Visual FAQ Component -->
+<section class="py-12 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-8">
+    <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">
+      Frequently Asked Questions
+    </h2>
+    
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <details class="bg-white border border-gray-200 group">
+          <summary class="px-6 py-4 cursor-pointer font-medium text-gray-900 flex justify-between items-center hover:bg-gray-50 transition-colors">
+            {faq.question}
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div class="px-6 pb-4 text-gray-600 font-light leading-relaxed border-t border-gray-100 pt-4">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
