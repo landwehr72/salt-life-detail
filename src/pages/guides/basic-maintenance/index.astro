@@ -1,0 +1,357 @@
+---
+// src/pages/guides/basic-maintenance/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categoryData = {
+  title: "Basic Marine Maintenance Guides",
+  description: "Essential boat care routines and maintenance guides for saltwater conditions. Learn fundamental techniques to keep your vessel in top condition.",
+  category: "Basic Maintenance",
+  totalGuides: 15
+};
+
+const featuredGuides = [
+  {
+    title: "Complete Jetski Cleaning Guide",
+    difficulty: "Beginner",
+    readTime: "15 min read",
+    excerpt: "Step-by-step process for maintaining your jetski in saltwater conditions, from weekly rinses to monthly deep cleans.",
+    slug: "complete-jetski-cleaning-guide",
+    featured: true,
+    tasks: ["Fresh water rinse", "Weekly cleaning", "Monthly protection"]
+  },
+  {
+    title: "Daily Boat Rinse Routine",
+    difficulty: "Beginner", 
+    readTime: "8 min read",
+    excerpt: "The 5-minute rinse routine that prevents 90% of salt damage. Essential for every boat owner in Florida.",
+    slug: "daily-boat-rinse-routine",
+    featured: true,
+    tasks: ["Post-ride rinse", "Salt removal", "Quick inspection"]
+  },
+  {
+    title: "Weekly Boat Cleaning Checklist",
+    difficulty: "Beginner",
+    readTime: "12 min read",
+    excerpt: "Comprehensive weekly maintenance routine that keeps your boat pristine and prevents major issues.",
+    slug: "weekly-boat-cleaning-checklist", 
+    featured: true,
+    tasks: ["Hull cleaning", "Deck care", "Interior maintenance"]
+  },
+  {
+    title: "Engine Bay Maintenance Basics",
+    difficulty: "Intermediate",
+    readTime: "20 min read",
+    excerpt: "Safe cleaning and maintenance techniques for your boat's engine compartment.",
+    slug: "engine-bay-maintenance-basics",
+    featured: false,
+    tasks: ["Visual inspection", "Safe cleaning", "Corrosion prevention"]
+  }
+];
+
+const maintenanceTypes = [
+  {
+    name: "Daily Care",
+    description: "Quick 5-10 minute routines after each use",
+    count: 4,
+    slug: "daily-care",
+    icon: "D",
+    difficulty: "Beginner"
+  },
+  {
+    name: "Weekly Cleaning",
+    description: "Comprehensive cleaning and inspection routines", 
+    count: 6,
+    slug: "weekly-cleaning",
+    icon: "W",
+    difficulty: "Beginner"
+  },
+  {
+    name: "Monthly Deep Clean",
+    description: "Thorough maintenance and protection application",
+    count: 3,
+    slug: "monthly-deep-clean", 
+    icon: "M",
+    difficulty: "Intermediate"
+  },
+  {
+    name: "Seasonal Prep",
+    description: "Hurricane season and storage preparation",
+    count: 2,
+    slug: "seasonal-prep",
+    icon: "S", 
+    difficulty: "Intermediate"
+  }
+];
+
+const quickTips = [
+  {
+    tip: "Always rinse with fresh water immediately after saltwater use",
+    importance: "Critical",
+    timesSaved: "Hours of restoration work"
+  },
+  {
+    tip: "Use pH-neutral soaps only - never household cleaners",
+    importance: "High", 
+    timesSaved: "Prevents gelcoat damage"
+  },
+  {
+    tip: "Work in shade during cooler parts of the day",
+    importance: "Medium",
+    timesSaved: "Better results, less effort"
+  },
+  {
+    tip: "Two-bucket method prevents scratching during washing",
+    importance: "High",
+    timesSaved: "Maintains boat's finish"
+  }
+];
+---
+
+<BaseLayout 
+  title={categoryData.title}
+  description={categoryData.description}
+  keywords="boat maintenance guide, marine maintenance basics, saltwater boat care, basic boat cleaning"
+>
+  <!-- Header Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center max-w-4xl mx-auto mb-12">
+        <div class="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 text-sm font-medium mb-6">
+          <span class="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+          How-To Guides
+        </div>
+        
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          {categoryData.category} Guides
+        </h1>
+        
+        <p class="text-xl text-gray-600 font-light leading-relaxed">
+          {categoryData.description}
+        </p>
+        
+        <div class="flex justify-center items-center space-x-6 mt-8 text-sm text-gray-500">
+          <div class="flex items-center">
+            <span class="font-medium text-gray-900">{categoryData.totalGuides}</span>
+            <span class="ml-1">Step-by-Step Guides</span>
+          </div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>Beginner Friendly</div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>Florida Tested</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Tips Bar -->
+  <section class="py-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-lg font-medium text-gray-900 mb-4 text-center">Essential Quick Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {quickTips.map((tip) => (
+          <div class="bg-white border border-gray-200 p-4 text-center">
+            <div class="inline-flex px-2 py-1 text-xs font-medium mb-2 bg-gray-100 text-gray-800">
+              {tip.importance}
+            </div>
+            <p class="text-sm text-gray-700 font-medium mb-1">{tip.tip}</p>
+            <p class="text-xs text-gray-500">{tip.timesSaved}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Maintenance Types -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-12 text-center">Browse by Frequency</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {maintenanceTypes.map((type) => (
+          <a 
+            href={`/guides/basic-maintenance/${type.slug}`}
+            class="bg-white border border-gray-200 p-6 hover:border-gray-300 hover:shadow-lg transition-all duration-300 group text-center"
+          >
+            <div class="text-4xl mb-4">{type.icon}</div>
+            <h3 class="font-medium text-gray-900 mb-2 group-hover:text-gray-700">
+              {type.name}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4 font-light">
+              {type.description}
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-light">
+                {type.count} guides
+              </span>
+              <span class="text-xs px-2 py-1 font-medium bg-gray-100 text-gray-800">
+                {type.difficulty}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Guides -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="text-3xl font-light text-gray-900">Essential Guides</h2>
+        <a href="/guides/basic-maintenance/all" class="text-gray-600 hover:text-gray-900 font-light">
+          View All {categoryData.totalGuides} →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {featuredGuides.map((guide) => (
+          <article class="bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 group">
+            <div class="aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200 flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-white border border-gray-200 mx-auto mb-3 flex items-center justify-center">
+                  <span class="text-2xl font-bold text-gray-800">B</span>
+                </div>
+                <span class="text-xs text-gray-600 font-medium">{guide.difficulty}</span>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900 mb-1 group-hover:text-gray-700">
+                    {guide.title}
+                  </h3>
+                  <div class="flex items-center space-x-3 text-xs text-gray-500">
+                    <span class="px-2 py-1 bg-gray-100 text-gray-800 font-medium">
+                      {guide.difficulty}
+                    </span>
+                    <span>{guide.readTime}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
+                {guide.excerpt}
+              </p>
+              
+              <div class="mb-4">
+                <h4 class="text-xs font-medium text-gray-700 mb-2">You'll Learn:</h4>
+                <ul class="flex flex-wrap gap-2">
+                  {guide.tasks.map((task) => (
+                    <li class="text-xs bg-gray-100 text-gray-700 px-2 py-1">
+                      {task}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-600 bg-gray-50 px-2 py-1 font-medium">
+                  {guide.difficulty}
+                </span>
+                <a 
+                  href={`/guides/${guide.slug}`}
+                  class="text-sm text-gray-900 hover:text-gray-600 font-medium"
+                >
+                  Read Guide →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Maintenance Schedule -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Southwest Florida Maintenance Schedule</h2>
+      
+      <div class="bg-white border border-gray-200 p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">After Every Use</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Fresh water rinse (5 minutes)
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Engine cooling system flush
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Visual inspection for issues
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Weekly (High Use)</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Deep clean with marine soap
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Interior and upholstery care
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Check fluid levels and belts
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Monthly/Quarterly</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Wax or ceramic coating application
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Detailed engine bay cleaning
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-gray-600 rounded-full mr-3"></span>
+                Comprehensive systems check
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-gray-50 border border-gray-200">
+          <p class="text-sm text-gray-800">
+            <strong>Hurricane Season Note:</strong> Increase cleaning frequency June-November due to higher humidity and frequent rain. Clean immediately after any storm exposure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-gray-900">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl font-light text-white mb-6">Get Maintenance Reminders</h2>
+      <p class="text-lg text-gray-300 mb-8 font-light">
+        Subscribe for seasonal maintenance tips and new basic care guides.
+      </p>
+      <div class="max-w-md mx-auto">
+        <div class="flex border border-gray-700">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            class="flex-1 px-4 py-3 bg-gray-800 text-white border-none focus:outline-none font-light placeholder-gray-400"
+          >
+          <button class="bg-gray-900 text-white px-6 py-3 font-medium hover:bg-gray-700 transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

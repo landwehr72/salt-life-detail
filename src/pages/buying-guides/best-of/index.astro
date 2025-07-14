@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Best Marine Products Buying Guides';
+const pageDescription = 'Coming soon: Curated lists of the best marine detailing products in every category.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Best Of Buying Guides"
+    description="We're compiling the definitive 'best of' lists for every marine detailing category, based on our extensive testing."
+    category="buying-guides"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'All Buying Guides',
+        href: '/buying-guides',
+        description: 'Browse our current buying guide collection'
+      },
+      {
+        title: 'Product Reviews',
+        href: '/reviews',
+        description: 'Read detailed individual product reviews'
+      }
+    ]}
+  />
+</BaseLayout>

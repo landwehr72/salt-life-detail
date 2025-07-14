@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Ceramic Coating Safe Cleaners Reviews';
+const pageDescription = 'Coming soon: Reviews of cleaners that are safe for ceramic coated marine surfaces.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Ceramic Coating Safe Cleaners"
+    description="We're testing cleaners that won't damage or strip ceramic coatings, helping you maintain your protective investment."
+    category="reviews"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'Ceramic Coatings & Sealants',
+        href: '/reviews/waxes-sealants',
+        description: 'Learn about ceramic coating options for marine use'
+      },
+      {
+        title: 'Marine Cleaners Overview',
+        href: '/reviews/cleaners',
+        description: 'Browse our current selection of marine cleaner reviews'
+      }
+    ]}
+  />
+</BaseLayout>

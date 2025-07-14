@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Marine Polymer Sealants Reviews';
+const pageDescription = 'Coming soon: Reviews of the best polymer sealants for long-lasting marine protection.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Marine Polymer Sealants"
+    description="We're testing synthetic polymer sealants that offer excellent protection and durability for marine environments."
+    category="reviews"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'Waxes & Sealants Overview',
+        href: '/reviews/waxes-sealants',
+        description: 'Browse our current protection product reviews'
+      },
+      {
+        title: 'Spray Sealants',
+        href: '/reviews/waxes-sealants/spray-sealants',
+        description: 'Quick application sealant options'
+      }
+    ]}
+  />
+</BaseLayout>

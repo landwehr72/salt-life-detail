@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Seasonal Marine Detailing Guides';
+const pageDescription = 'Coming soon: Seasonal buying guides for marine detailing products based on weather conditions.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Seasonal Buying Guides"
+    description="We're developing seasonal recommendations for marine products based on weather conditions, hurricane season, and storage needs."
+    category="buying-guides"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'All Buying Guides',
+        href: '/buying-guides',
+        description: 'Browse our current buying guide collection'
+      },
+      {
+        title: 'Seasonal Care Guides',
+        href: '/guides/seasonal-care',
+        description: 'Learn seasonal maintenance techniques'
+      }
+    ]}
+  />
+</BaseLayout>

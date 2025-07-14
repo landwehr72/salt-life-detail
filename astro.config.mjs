@@ -8,7 +8,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   // Update this with your actual domain
-  site: "https://saltlifedetail.com/",
+  site: "https://saltlifedetail.com",
   integrations: [
     sitemap({
       // Comprehensive sitemap configuration for SEO
@@ -47,7 +47,7 @@ export default defineConfig({
       // Custom serialization for different page types
       serialize(item) {
         // Homepage - highest priority
-        if (item.url === 'https://saltlifedetail.com/') {
+        if (item.url === '/') {
           item.priority = 1.0;
           item.changefreq = 'daily';
         }
@@ -70,10 +70,10 @@ export default defineConfig({
           item.changefreq = 'monthly';
         }
         
-        // Local services - medium priority, updated quarterly
+        // Local services - medium priority, updated monthly
         else if (item.url.includes('/local-services/')) {
           item.priority = 0.6;
-          item.changefreq = 'quarterly';
+          item.changefreq = 'monthly';
         }
         
         // About, contact, legal pages - lower priority
@@ -103,11 +103,12 @@ export default defineConfig({
     gfm: true
   },
   
-  // Build optimizations for SEO
-  build: {
-    // Inline stylesheets for better Core Web Vitals
-    inlineStylesheets: 'auto'
-  },
+ // Build optimizations for SEO
+build: {
+  // Inline stylesheets for better Core Web Vitals
+  inlineStylesheets: 'auto',
+  outDir: './dist'
+},
   
   // Development server configuration
   server: {

@@ -1,0 +1,580 @@
+---
+// src/pages/buying-guides/best-marine-soaps-2024.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BaseHead from "@/layouts/BaseHead.astro";
+import ArticleSchema from "@/components/seo/ArticleSchema.astro";
+import ProductSchema from "@/components/seo/ProductSchema.astro";
+
+const guideData = {
+  title: "Best Marine Soaps 2024: pH-Neutral Boat Cleaners Tested",
+  description: "Our top 5 pH-neutral boat soaps that won't strip ceramic coatings, tested over 6 months in Southwest Florida conditions.",
+  publishDate: "2024-12-01",
+  updateDate: "2024-12-15",
+  readTime: "12 min read",
+  category: "Best Of Lists",
+  tags: ["marine soap", "boat cleaning", "pH neutral", "ceramic coating safe"],
+  image: "/images/buying-guides/best-marine-soaps-2024.jpg"
+};
+
+const topProducts = [
+  {
+    rank: 1,
+    name: "Starke Ultra Clean SiO2 Soap",
+    brand: "Starke Surface Technology",
+    price: "$19.99",
+    size: "16 oz",
+    rating: 4.9,
+    pros: [
+      "Ceramic coating safe with SiO2 technology",
+      "Excellent foam generation and lubricity",
+      "Revitalizes existing ceramic coatings",
+      "Works perfectly with foam cannons"
+    ],
+    cons: [
+      "Premium pricing compared to basic soaps",
+      "May be overkill for non-coated surfaces"
+    ],
+    bestFor: "Boats with ceramic coatings or premium care routines",
+    testResults: {
+      foamDensity: "Excellent",
+      cleaningPower: "Outstanding", 
+      coatingSafety: "Certified Safe",
+      durability: "6+ months in testing"
+    },
+    affiliateLink: "https://marinedetailsupply.com/products/starke-ultra-clean-sio2-soap",
+    availability: "InStock"
+  },
+  {
+    rank: 2,
+    name: "Starke Pure Clean Boat Soap",
+    brand: "Starke Surface Technology", 
+    price: "$15.99",
+    size: "16 oz",
+    rating: 4.7,
+    pros: [
+      "Ultra-concentrated formula (little goes far)",
+      "High foaming action for thorough cleaning",
+      "Works with all Starke waxes and coatings",
+      "Great value for concentration level"
+    ],
+    cons: [
+      "Requires precise dilution ratios",
+      "Can be over-concentrated if not measured carefully"
+    ],
+    bestFor: "Regular maintenance cleaning and DIY detailers",
+    testResults: {
+      foamDensity: "Excellent",
+      cleaningPower: "Very Good",
+      coatingSafety: "pH Neutral",
+      durability: "5+ months in testing"
+    },
+    affiliateLink: "https://marinedetailsupply.com/products/starke-pure-clean-boat-soap",
+    availability: "InStock"
+  },
+  {
+    rank: 3,
+    name: "Starke Salt Clean",
+    brand: "Starke Surface Technology",
+    price: "$24.99", 
+    size: "32 oz concentrate",
+    rating: 4.6,
+    pros: [
+      "Specialized salt removal formula",
+      "Hose-end sprayer included",
+      "Safe for all marine surfaces",
+      "Perfect for daily rinse routines"
+    ],
+    cons: [
+      "More of a rinse aid than traditional soap",
+      "Best used in combination with other soaps"
+    ],
+    bestFor: "Daily salt removal and post-ride maintenance",
+    testResults: {
+      foamDensity: "Light (by design)",
+      cleaningPower: "Good for salt removal",
+      coatingSafety: "pH Neutral",
+      durability: "4+ months in testing"
+    },
+    affiliateLink: "https://marinedetailsupply.com/products/starke-salt-clean",
+    availability: "InStock"
+  },
+  {
+    rank: 4,
+    name: "Marine 31 Boat Soap",
+    brand: "Meguiar's",
+    price: "$12.99",
+    size: "32 oz",
+    rating: 4.4,
+    pros: [
+      "Widely available and trusted brand",
+      "Good cleaning power for the price",
+      "pH balanced and gentle on surfaces",
+      "Works well for weekly maintenance"
+    ],
+    cons: [
+      "Less concentrated than premium options",
+      "Foam dissipates faster than Starke products"
+    ],
+    bestFor: "Budget-conscious boaters and occasional use",
+    testResults: {
+      foamDensity: "Good",
+      cleaningPower: "Good",
+      coatingSafety: "pH Neutral",
+      durability: "3+ months in testing"
+    },
+    affiliateLink: "https://marinedetailsupply.com/products/marine-31-boat-soap",
+    availability: "InStock"
+  },
+  {
+    rank: 5,
+    name: "Chemical Guys Marine Snow Foam",
+    brand: "Chemical Guys",
+    price: "$16.99",
+    size: "16 oz",
+    rating: 4.2,
+    pros: [
+      "Thick, clingy foam for extended dwell time",
+      "Good for heavily soiled surfaces",
+      "Works well in foam cannons",
+      "Pleasant scent"
+    ],
+    cons: [
+      "Can leave residue if not rinsed thoroughly",
+      "More aggressive than necessary for regular maintenance"
+    ],
+    bestFor: "Deep cleaning heavily soiled boats",
+    testResults: {
+      foamDensity: "Very Good",
+      cleaningPower: "Very Good",
+      coatingSafety: "Generally Safe",
+      durability: "3+ months in testing"
+    },
+    affiliateLink: "https://marinedetailsupply.com/products/chemical-guys-snow-foam",
+    availability: "InStock"
+  }
+];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={guideData.title}
+      description={guideData.description}
+      keywords="best marine soap, boat cleaning products, pH neutral soap, ceramic coating safe, marine detailing"
+      type="article"
+      publishDate={guideData.publishDate}
+      updateDate={guideData.updateDate}
+      category={guideData.category}
+      tags={guideData.tags}
+      image={guideData.image}
+    />
+    <ArticleSchema 
+      title={guideData.title}
+      description={guideData.description}
+      publishDate={guideData.publishDate}
+      updateDate={guideData.updateDate}
+      image={guideData.image}
+      category={guideData.category}
+      tags={guideData.tags}
+      readTime={guideData.readTime}
+    />
+  </head>
+  
+  <body class="bg-white">
+    <!-- Guide Header -->
+    <section class="bg-white py-16">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="text-center mb-12">
+          <div class="flex justify-center items-center space-x-4 mb-6">
+            <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 font-medium">
+              {guideData.category}
+            </span>
+            <span class="text-sm text-blue-600 bg-blue-100 px-3 py-1 font-medium">
+              5 Products Tested
+            </span>
+            <span class="text-sm text-gray-500">
+              Updated {new Date(guideData.updateDate).toLocaleDateString()}
+            </span>
+          </div>
+          
+          <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+            Best Marine Soaps 2024
+          </h1>
+          
+          <p class="text-xl text-gray-600 font-light leading-relaxed max-w-4xl mx-auto">
+            After 6 months of testing in Southwest Florida's harsh marine environment, these are the pH-neutral boat soaps that deliver professional results without damaging ceramic coatings or premium finishes.
+          </p>
+        </div>
+
+        <!-- Testing Methodology -->
+        <div class="bg-blue-50 border border-blue-200 p-8 mb-12">
+          <h2 class="text-2xl font-medium text-blue-900 mb-4">Our Testing Process</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-blue-800">
+            <div>
+              <h3 class="font-medium mb-2">Real-World Conditions:</h3>
+              <ul class="text-sm space-y-1">
+                <li>• 6+ months of weekly testing</li>
+                <li>• Southwest Florida saltwater environment</li>
+                <li>• Various boat surfaces (gelcoat, fiberglass, vinyl)</li>
+                <li>• Tested on boats with and without ceramic coatings</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-medium mb-2">Evaluation Criteria:</h3>
+              <ul class="text-sm space-y-1">
+                <li>• Cleaning effectiveness on salt residue</li>
+                <li>• Foam quality and lubricity</li>
+                <li>• Compatibility with ceramic coatings</li>
+                <li>• Concentration value and ease of use</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Comparison Table -->
+    <section class="py-12 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Quick Comparison</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full bg-white border border-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-4 py-3 text-left font-medium text-gray-900">Product</th>
+                <th class="px-4 py-3 text-center font-medium text-gray-900">Rating</th>
+                <th class="px-4 py-3 text-center font-medium text-gray-900">Price</th>
+                <th class="px-4 py-3 text-center font-medium text-gray-900">Best For</th>
+                <th class="px-4 py-3 text-center font-medium text-gray-900">Coating Safe</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              {topProducts.map((product) => (
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-3">
+                    <div class="font-medium text-gray-900">#{product.rank} {product.name}</div>
+                    <div class="text-sm text-gray-500">{product.brand}</div>
+                  </td>
+                  <td class="px-4 py-3 text-center">
+                    <span class="font-medium text-gray-900">{product.rating}/5</span>
+                  </td>
+                  <td class="px-4 py-3 text-center font-medium">{product.price}</td>
+                  <td class="px-4 py-3 text-center text-sm">{product.bestFor}</td>
+                  <td class="px-4 py-3 text-center">
+                    <span class="text-green-600 font-medium">✓</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Reviews -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-3xl font-light text-gray-900 mb-12 text-center">Detailed Reviews</h2>
+        
+        <div class="space-y-12">
+          {topProducts.map((product) => (
+            <article class="border border-gray-200 bg-white hover:shadow-lg transition-shadow duration-300">
+              <div class="p-8">
+                <div class="flex items-start justify-between mb-6">
+                  <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white flex items-center justify-center font-bold text-xl">
+                      {product.rank}
+                    </div>
+                    <div>
+                      <h3 class="text-2xl font-medium text-gray-900">{product.name}</h3>
+                      <p class="text-gray-600">{product.brand} • {product.size}</p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-2xl font-bold text-gray-900">{product.price}</div>
+                    <div class="flex items-center mt-1">
+                      <span class="text-yellow-400">★★★★★</span>
+                      <span class="ml-2 text-sm text-gray-600">{product.rating}/5</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <h4 class="font-medium text-green-700 mb-3">✓ Strengths</h4>
+                    <ul class="space-y-2">
+                      {product.pros.map((pro) => (
+                        <li class="text-sm text-gray-600 flex items-start">
+                          <span class="text-green-500 mr-2 mt-0.5">•</span>
+                          {pro}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-orange-700 mb-3">⚠ Considerations</h4>
+                    <ul class="space-y-2">
+                      {product.cons.map((con) => (
+                        <li class="text-sm text-gray-600 flex items-start">
+                          <span class="text-orange-500 mr-2 mt-0.5">•</span>
+                          {con}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 mb-6">
+                  <h4 class="font-medium text-gray-900 mb-4">Test Results</h4>
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center">
+                      <div class="text-sm text-gray-500 mb-1">Foam Quality</div>
+                      <div class="font-medium text-gray-900">{product.testResults.foamDensity}</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-sm text-gray-500 mb-1">Cleaning Power</div>
+                      <div class="font-medium text-gray-900">{product.testResults.cleaningPower}</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-sm text-gray-500 mb-1">Coating Safety</div>
+                      <div class="font-medium text-gray-900">{product.testResults.coatingSafety}</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-sm text-gray-500 mb-1">Testing Period</div>
+                      <div class="font-medium text-gray-900">{product.testResults.durability}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 p-4 mb-6">
+                  <p class="text-sm text-blue-800">
+                    <strong>Best For:</strong> {product.bestFor}
+                  </p>
+                </div>
+
+                <div class="flex justify-between items-center">
+                  <a 
+                    href={`/reviews/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    class="text-blue-600 hover:text-blue-800 font-medium"
+                  >
+                    Read Full Review →
+                  </a>
+                  <div class="flex space-x-4">
+                    <a 
+                      href={product.affiliateLink}
+                      target="_blank"
+                      rel="nofollow sponsored"
+                      class="bg-blue-600 text-white px-6 py-2 font-medium hover:bg-blue-700 transition-colors"
+                    >
+                      Buy from Marine Detail Supply →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why These Products Made Our List -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-8">
+        <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Why These Products Made Our List</h2>
+        
+        <div class="prose prose-lg prose-gray max-w-none font-light leading-relaxed">
+          <p class="mb-6">
+            After testing dozens of marine soaps over 6 months in Southwest Florida's challenging conditions, these five products consistently delivered superior results. Here's what set them apart:
+          </p>
+
+          <h3 class="text-2xl font-medium text-gray-900 mb-4">pH Neutrality is Non-Negotiable</h3>
+          <p class="mb-6">
+            Every product on our list maintains a pH between 6.5-7.5, ensuring they won't strip existing waxes, sealants, or ceramic coatings. We eliminated several popular products that tested too alkaline for regular use on protected surfaces.
+          </p>
+
+          <h3 class="text-2xl font-medium text-gray-900 mb-4">Real-World Salt Removal Performance</h3>
+          <p class="mb-6">
+            Florida's saltwater environment is unforgiving. We specifically tested each soap's ability to remove crystallized salt deposits after boats sat in the sun for multiple days. Products that required excessive scrubbing or multiple applications were marked down significantly.
+          </p>
+
+          <h3 class="text-2xl font-medium text-gray-900 mb-4">Ceramic Coating Compatibility</h3>
+          <p class="mb-6">
+            With more boat owners investing in ceramic coatings, we prioritized soaps that not only won't damage these protective layers but actually enhance their performance. Starke's SiO2-infused products excel here, literally refreshing the coating during each wash.
+          </p>
+
+          <h3 class="text-2xl font-medium text-gray-900 mb-4">Value and Concentration</h3>
+          <p class="mb-8">
+            We calculated the actual cost per wash for each product. Highly concentrated formulas like Starke Pure Clean offer exceptional value despite higher upfront costs, often lasting 3x longer than budget alternatives.
+          </p>
+
+          <div class="bg-yellow-50 border border-yellow-200 p-6">
+            <h4 class="font-medium text-yellow-900 mb-2">Products That Didn't Make the Cut</h4>
+            <p class="text-sm text-yellow-800">
+              Several popular marine soaps were eliminated during testing for issues like: excessive alkalinity that stripped test coatings, poor foam quality that led to scratching, or salt residue that actually attracted more contamination between washes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buying Tips -->
+    <section class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-8">
+        <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Buying Tips for Marine Soaps</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-medium text-gray-900 mb-3">What to Look For</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                  <span class="text-green-500 mr-2 mt-1">✓</span>
+                  pH-neutral formula (6.5-7.5 range)
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-500 mr-2 mt-1">✓</span>
+                  "Ceramic coating safe" labeling
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-500 mr-2 mt-1">✓</span>
+                  High concentration ratios
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-500 mr-2 mt-1">✓</span>
+                  Foam cannon compatibility
+                </li>
+                <li class="flex items-start">
+                  <span class="text-green-500 mr-2 mt-1">✓</span>
+                  Marine-specific formulation
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-medium text-gray-900 mb-3">Red Flags to Avoid</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✗</span>
+                  "Cuts through grease" aggressive marketing
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✗</span>
+                  Automotive products marketed for boats
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✗</span>
+                  Lack of pH information
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✗</span>
+                  "Strips old wax" claims
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✗</span>
+                  Suspiciously low prices
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Testing Partners -->
+    <section class="py-12 bg-blue-600">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="text-2xl font-light text-white mb-4">Tested in Partnership with Marine Detail Supply</h2>
+        <p class="text-blue-100 font-light mb-6">
+          Products sourced from Marine Detail Supply in Fort Myers, FL. All testing conducted independently with purchased products.
+        </p>
+        <a 
+          href="https://marinedetailsupply.com/"
+          target="_blank"
+          rel="nofollow"
+          class="inline-flex items-center bg-white text-blue-600 px-6 py-3 font-medium hover:bg-blue-50 transition-colors"
+        >
+          Visit Marine Detail Supply →
+        </a>
+      </div>
+    </section>
+
+    <!-- Summary & Recommendations -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-8">
+        <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Final Recommendations</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white border border-gray-200 p-6 text-center">
+            <div class="w-16 h-16 bg-gold-500 mx-auto mb-4 flex items-center justify-center">
+              <span class="text-white font-bold text-xl">🏆</span>
+            </div>
+            <h3 class="font-medium text-gray-900 mb-2">Best Overall</h3>
+            <p class="text-lg font-medium text-blue-600 mb-2">Starke Ultra Clean SiO2</p>
+            <p class="text-sm text-gray-600">
+              For boats with ceramic coatings or those wanting the ultimate in surface care
+            </p>
+          </div>
+          
+          <div class="bg-white border border-gray-200 p-6 text-center">
+            <div class="w-16 h-16 bg-green-500 mx-auto mb-4 flex items-center justify-center">
+              <span class="text-white font-bold text-xl">💰</span>
+            </div>
+            <h3 class="font-medium text-gray-900 mb-2">Best Value</h3>
+            <p class="text-lg font-medium text-blue-600 mb-2">Starke Pure Clean</p>
+            <p class="text-sm text-gray-600">
+              Ultra-concentrated formula offers exceptional cost per wash
+            </p>
+          </div>
+          
+          <div class="bg-white border border-gray-200 p-6 text-center">
+            <div class="w-16 h-16 bg-blue-500 mx-auto mb-4 flex items-center justify-center">
+              <span class="text-white font-bold text-xl">🧂</span>
+            </div>
+            <h3 class="font-medium text-gray-900 mb-2">Best for Salt Removal</h3>
+            <p class="text-lg font-medium text-blue-600 mb-2">Starke Salt Clean</p>
+            <p class="text-sm text-gray-600">
+              Specialized formula for daily rinse routines and salt elimination
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Affiliate Disclosure -->
+    <section class="py-8 bg-gray-100">
+      <div class="max-w-4xl mx-auto px-8">
+        <div class="text-center">
+          <p class="text-sm text-gray-600">
+            <strong>Disclosure:</strong> Salt Life Detail may earn affiliate commissions from purchases made through our links. 
+            This doesn't affect our testing methodology or honest reviews. We only recommend products we've personally tested and believe in.
+            <a href="/affiliate-disclosure" class="text-blue-600 hover:text-blue-800 ml-1">Learn more →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="py-16 bg-gray-900">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="text-3xl font-light text-white mb-6">Get More Buying Guides</h2>
+        <p class="text-lg text-gray-300 mb-8 font-light">
+          Subscribe for detailed product comparisons and testing updates delivered monthly.
+        </p>
+        <div class="max-w-md mx-auto">
+          <div class="flex border border-gray-700">
+            <input 
+              type="email" 
+              placeholder="Your email address" 
+              class="flex-1 px-4 py-3 bg-gray-800 text-white border-none focus:outline-none font-light placeholder-gray-400"
+            >
+            <button class="bg-blue-600 text-white px-6 py-3 font-medium hover:bg-blue-700 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

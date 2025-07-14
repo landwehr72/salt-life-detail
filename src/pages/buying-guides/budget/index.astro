@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Budget Marine Detailing Buying Guides';
+const pageDescription = 'Coming soon: Buying guides for effective marine detailing on any budget.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Budget Buying Guides"
+    description="We're creating guides to help you achieve professional results without breaking the bank, featuring budget-friendly alternatives."
+    category="buying-guides"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'All Buying Guides',
+        href: '/buying-guides',
+        description: 'Browse our current buying guide collection'
+      },
+      {
+        title: 'Best Marine Soaps 2024',
+        href: '/buying-guides/best-marine-soaps-2024',
+        description: 'Current budget-friendly soap recommendations'
+      }
+    ]}
+  />
+</BaseLayout>

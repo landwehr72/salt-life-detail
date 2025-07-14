@@ -49,12 +49,8 @@ Allow: /css/
 Allow: /js/
 Allow: /fonts/
 
-# Sitemaps (multiple for better organization)
+# Sitemaps
 Sitemap: https://saltlifedetail.com/sitemap-index.xml
-Sitemap: https://saltlifedetail.com/sitemap-pages.xml
-Sitemap: https://saltlifedetail.com/sitemap-reviews.xml
-Sitemap: https://saltlifedetail.com/sitemap-guides.xml
-Sitemap: https://saltlifedetail.com/sitemap-local-services.xml
 
 # Crawl delay for aggressive crawlers
 User-agent: AhrefsBot

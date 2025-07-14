@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ComingSoon from "@/components/marine/ComingSoon.astro";
+---
+
+<BaseLayout 
+  title="All Tools & Equipment Reviews - Coming Soon"
+  description="Complete collection of marine detailing tools and equipment reviews coming soon. Professional testing of 25+ products for boat care."
+  keywords="marine tools reviews, boat equipment reviews, detailing tools, marine gear"
+>
+  <ComingSoon 
+    category="All Tools & Equipment Reviews"
+    description="Complete collection of marine detailing tools and equipment reviews"
+    expectedLaunch="Q4 2024"
+    features={[
+      "25+ professional tool reviews",
+      "Detailed comparison charts",
+      "Price vs performance analysis",
+      "Tool kit recommendations by budget"
+    ]}
+    backLink="/reviews/tools-equipment"
+    backText="Tools & Equipment Reviews"
+  />
+</BaseLayout>

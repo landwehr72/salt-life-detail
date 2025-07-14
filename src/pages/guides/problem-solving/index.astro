@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Marine Problem Solving Guides';
+const pageDescription = 'Coming soon: Expert solutions for common marine detailing problems and challenges.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Problem Solving Guides"
+    description="We're creating detailed solutions for common marine issues like stains, oxidation, mildew, and gelcoat damage."
+    category="guides"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'All Maintenance Guides',
+        href: '/guides',
+        description: 'Browse our current collection of marine maintenance guides'
+      },
+      {
+        title: 'Deep Cleaning Guides',
+        href: '/guides/deep-cleaning',
+        description: 'Tackle tough cleaning challenges'
+      }
+    ]}
+  />
+</BaseLayout>

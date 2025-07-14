@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ComingSoon from "@/components/marine/ComingSoon.astro";
+---
+
+<BaseLayout 
+  title="All Cleaners & Soaps Reviews - Coming Soon"
+  description="Complete collection of marine cleaner and soap reviews coming soon. Professional testing of 12+ products for boat cleaning."
+  keywords="marine cleaner reviews, boat soap reviews, pH neutral cleaners, marine detailing products"
+>
+  <ComingSoon 
+    category="All Cleaners & Soaps Reviews"
+    description="Complete collection of marine cleaner and soap reviews"
+    expectedLaunch="Q4 2024"
+    features={[
+      "12+ professional cleaner reviews",
+      "pH balance testing results",
+      "Ceramic coating compatibility guide",
+      "Value comparison and recommendations"
+    ]}
+    backLink="/reviews/cleaners"
+    backText="Cleaners & Soaps Reviews"
+  />
+</BaseLayout>

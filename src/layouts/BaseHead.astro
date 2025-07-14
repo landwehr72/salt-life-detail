@@ -129,9 +129,9 @@ const fullImageUrl = new URL(image, Astro.site).toString();
   "@type": "LocalBusiness",
   "name": "Salt Life Detail",
   "description": "Marine detailing product reviews and guides for Southwest Florida boat owners",
-  "url": "https://saltlifedetail.com",
-  "logo": "https://saltlifedetail.com/images/logo.png",
-  "image": "https://saltlifedetail.com/images/salt-life-detail-og.jpg",
+  "url": "",
+  "logo": "/images/logo.png",
+  "image": "/images/salt-life-detail-og.jpg",
   "telephone": "+1-239-XXX-XXXX",
   "email": "hello@saltlifedetail.com",
   "address": {
@@ -225,14 +225,14 @@ const fullImageUrl = new URL(image, Astro.site).toString();
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Salt Life Detail",
-  "url": "https://saltlifedetail.com",
+  "url": "",
   "description": "Expert marine detailing product reviews, guides, and local services in Southwest Florida",
   "publisher": {
     "@type": "Organization",
     "name": "Salt Life Detail",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://saltlifedetail.com/images/logo.png",
+      "url": "/images/logo.png",
       "width": 400,
       "height": 400
     }
@@ -241,13 +241,13 @@ const fullImageUrl = new URL(image, Astro.site).toString();
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://saltlifedetail.com/search?q={search_term_string}"
+      "urlTemplate": "/search?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   },
   "mainEntity": {
     "@type": "Organization",
-    "@id": "https://saltlifedetail.com/#organization"
+    "@id": "/#organization"
   }
 }
 </script>

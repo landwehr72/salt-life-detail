@@ -1,0 +1,46 @@
+// buying-guides/best-of/index.astro
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categoryData = {
+  title: "Best Marine Products Lists",
+  description: "Top-rated marine detailing products in every category. Comprehensive rankings based on real-world testing in Florida conditions.",
+  category: "Best Of Lists",
+  totalGuides: 8
+};
+
+const bestOfCategories = [
+  {
+    category: "Best Marine Soaps 2024",
+    products: 5,
+    lastUpdated: "December 2024",
+    topPick: "Starke Ultra Clean SiO2"
+  },
+  {
+    category: "Best Marine Waxes 2024", 
+    products: 6,
+    lastUpdated: "November 2024",
+    topPick: "Starke Repel Pro Ceramic"
+  },
+  {
+    category: "Best Microfiber Towels 2024",
+    products: 4,
+    lastUpdated: "October 2024", 
+    topPick: "Autofiber Saver Premium"
+  },
+  {
+    category: "Best Marine Polishers 2024",
+    products: 4,
+    lastUpdated: "September 2024",
+    topPick: "Rupes LHR15ES"
+  }
+];
+---
+
+<BaseLayout 
+  title={categoryData.title}
+  description={categoryData.description}
+  keywords="best marine products, top boat cleaning products, marine product rankings, best boat wax"
+>
+  <!-- Rankings, comparison tables, award badges, testing methodology -->
+</BaseLayout>

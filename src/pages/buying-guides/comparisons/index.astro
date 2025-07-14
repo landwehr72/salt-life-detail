@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Marine Product Comparison Guides';
+const pageDescription = 'Coming soon: Side-by-side comparisons of marine detailing products to help you choose.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Product Comparison Guides"
+    description="We're creating detailed side-by-side comparisons of similar marine products to help you make informed decisions."
+    category="buying-guides"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'All Buying Guides',
+        href: '/buying-guides',
+        description: 'Browse our current buying guide collection'
+      },
+      {
+        title: 'Product Reviews',
+        href: '/reviews',
+        description: 'Read detailed individual product reviews'
+      }
+    ]}
+  />
+</BaseLayout>

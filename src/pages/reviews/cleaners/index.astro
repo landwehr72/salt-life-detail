@@ -1,0 +1,290 @@
+---
+// src/pages/reviews/cleaners/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categoryData = {
+  title: "Boat Cleaners & Soaps Reviews",
+  description: "Expert reviews of marine cleaners and soaps tested in Southwest Florida's saltwater conditions. Find pH-neutral boat soaps that won't strip ceramic coatings.",
+  category: "Cleaners & Soaps",
+  totalProducts: 12
+};
+
+const featuredProducts = [
+  {
+    name: "Starke Ultra Clean SiO2 Soap",
+    brand: "Starke Surface Technology",
+    rating: 4.9,
+    price: "$19.99",
+    excerpt: "Ceramic coating safe with SiO2 technology that revitalizes existing coatings",
+    slug: "starke-ultra-clean-sio2-soap",
+    featured: true,
+    category: "Premium Soaps"
+  },
+  {
+    name: "Starke Pure Clean Boat Soap", 
+    brand: "Starke Surface Technology",
+    rating: 4.7,
+    price: "$15.99",
+    excerpt: "Ultra-concentrated formula with high foaming action for thorough cleaning",
+    slug: "starke-pure-clean-boat-soap",
+    featured: true,
+    category: "Concentrated Soaps"
+  },
+  {
+    name: "Starke Salt Clean",
+    brand: "Starke Surface Technology",
+    rating: 4.6,
+    price: "$24.99",
+    excerpt: "Specialized salt removal formula with hose-end sprayer",
+    slug: "starke-salt-clean",
+    featured: true,
+    category: "Salt Removal"
+  },
+  {
+    name: "Marine 31 Boat Soap",
+    brand: "Meguiar's",
+    rating: 4.4,
+    price: "$12.99", 
+    excerpt: "Trusted pH-neutral formula perfect for weekly maintenance",
+    slug: "marine-31-boat-soap",
+    featured: false,
+    category: "Basic Soaps"
+  }
+];
+
+const subcategories = [
+  {
+    name: "pH-Neutral Soaps",
+    description: "Gentle cleaners that won't strip wax or coatings",
+    count: 8,
+    slug: "ph-neutral"
+  },
+  {
+    name: "Salt Removal",
+    description: "Specialized products for saltwater rinsing",
+    count: 3,
+    slug: "salt-removal"
+  },
+  {
+    name: "Ceramic Safe",
+    description: "Cleaners formulated for ceramic-coated boats",
+    count: 5,
+    slug: "ceramic-safe"
+  },
+  {
+    name: "Degreasers",
+    description: "Heavy-duty cleaners for engine bays and tough stains",
+    count: 4,
+    slug: "degreasers"
+  }
+];
+---
+
+<BaseLayout 
+  title={categoryData.title}
+  description={categoryData.description}
+  keywords="marine soap reviews, boat cleaner reviews, pH neutral soap, ceramic coating safe cleaners"
+>
+  <!-- Header Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center max-w-4xl mx-auto mb-12">
+        <div class="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 text-sm font-medium mb-6">
+          <span class="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+          Product Reviews
+        </div>
+        
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          {categoryData.category} Reviews
+        </h1>
+        
+        <p class="text-xl text-gray-600 font-light leading-relaxed">
+          {categoryData.description}
+        </p>
+        
+        <div class="flex justify-center items-center space-x-6 mt-8 text-sm text-gray-500">
+          <div class="flex items-center">
+            <span class="font-medium text-gray-900">{categoryData.totalProducts}</span>
+            <span class="ml-1">Products Tested</span>
+          </div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>6+ Months Testing</div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>SW Florida Conditions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subcategories -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-2xl font-light text-gray-900 mb-8 text-center">Browse by Type</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {subcategories.map((sub) => (
+          <a 
+            href={`/reviews/cleaners/${sub.slug}`}
+            class="bg-white border border-gray-200 p-6 hover:border-gray-300 hover:shadow-sm transition-all duration-300 group text-center"
+          >
+            <h3 class="font-medium text-gray-900 mb-2 group-hover:text-gray-700">
+              {sub.name}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-3 font-light">
+              {sub.description}
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500 font-light">
+                {sub.count} products
+              </span>
+              <span class="text-gray-400 group-hover:text-gray-600 transition-colors">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="text-3xl font-light text-gray-900">Top Rated Products</h2>
+        <a href="/reviews/cleaners/all" class="text-gray-600 hover:text-gray-900 font-light">
+          View All {categoryData.totalProducts} →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {featuredProducts.map((product) => (
+          <article class="bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 group">
+            <div class="aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200 flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-white border border-gray-200 mx-auto mb-3 flex items-center justify-center">
+                  <span class="text-2xl font-bold text-gray-800">C</span>
+                </div>
+                <span class="text-xs text-gray-600 font-medium">{product.category}</span>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900 mb-1 group-hover:text-gray-700">
+                    {product.name}
+                  </h3>
+                  <p class="text-sm text-gray-500">{product.brand}</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-lg font-medium text-gray-900">{product.price}</div>
+                  <div class="flex items-center mt-1">
+                    <span class="text-gray-400 text-sm">★★★★★</span>
+                    <span class="ml-1 text-xs text-gray-500">{product.rating}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
+                {product.excerpt}
+              </p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-600 bg-gray-50 px-2 py-1 font-medium">
+                  {product.category}
+                </span>
+                <a 
+                  href={`/reviews/${product.slug}`}
+                  class="text-sm text-gray-900 hover:text-gray-600 font-medium"
+                >
+                  Read Review →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Marine-Specific Cleaners -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Why Marine-Specific Cleaners Matter</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-6">
+          <div class="flex items-start space-x-4">
+            <div class="w-8 h-8 bg-gray-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">
+              pH
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-900 mb-2">pH-Neutral Formulation</h3>
+              <p class="text-sm text-gray-600 font-light">
+                Marine soaps maintain 6.5-7.5 pH to protect gelcoat, waxes, and ceramic coatings. Household cleaners can be too alkaline.
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-4">
+            <div class="w-8 h-8 bg-gray-600 text-white flex items-center justify-center text-sm flex-shrink-0 mt-1">
+              S
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-900 mb-2">Salt Removal Technology</h3>
+              <p class="text-sm text-gray-600 font-light">
+                Specialized surfactants that break down salt crystals without leaving residues that attract more contamination.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="flex items-start space-x-4">
+            <div class="w-8 h-8 bg-gray-600 text-white flex items-center justify-center text-sm flex-shrink-0 mt-1">
+              P
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-900 mb-2">Surface Protection</h3>
+              <p class="text-sm text-gray-600 font-light">
+                Formulated to work with marine waxes and coatings, often adding protection during the wash process.
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-4">
+            <div class="w-8 h-8 bg-gray-600 text-white flex items-center justify-center text-sm flex-shrink-0 mt-1">
+              M
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-900 mb-2">Marine Environment Safe</h3>
+              <p class="text-sm text-gray-600 font-light">
+                Biodegradable formulas that won't harm marine ecosystems when properly used and rinsed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-gray-900">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl font-light text-white mb-6">Get Product Updates</h2>
+      <p class="text-lg text-gray-300 mb-8 font-light">
+        Be the first to know when we test new marine cleaners and soaps.
+      </p>
+      <div class="max-w-md mx-auto">
+        <div class="flex border border-gray-700">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            class="flex-1 px-4 py-3 bg-gray-800 text-white border-none focus:outline-none font-light placeholder-gray-400"
+          >
+          <button class="bg-gray-900 text-white px-6 py-3 font-medium hover:bg-gray-700 transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

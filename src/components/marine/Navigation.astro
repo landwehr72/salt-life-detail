@@ -1,5 +1,5 @@
 ---
-// Navigation.astro - Marine-focused navigation
+// src/components/marine/Navigation.astro
 const currentPath = Astro.url.pathname;
 
 const navItems = [
@@ -38,29 +38,44 @@ const navItems = [
   {
     label: 'Local Services',
     href: '/local-services',
+    dropdown: [
+      { label: 'All Services', href: '/local-services' },
+      { label: 'Detailing Services', href: '/local-services/detailing-services' },
+      { label: 'Supply Stores', href: '/local-services/supply-stores' },
+      { label: 'Marinas', href: '/local-services/marinas' },
+      { label: 'Mobile Services', href: '/local-services/mobile-services' },
+    ],
     badge: 'SW FL'
   },
   {
     label: 'About',
     href: '/about'
+  },
+  {
+    label: 'FAQ',
+    href: '/faq'
   }
 ];
+
+function isActive(itemPath: string, currentPath: string): boolean {
+  if (itemPath === '/') return currentPath === '/';
+  return currentPath.startsWith(itemPath);
+}
 ---
 
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
+      
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-3">
-          <div class="size-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <svg class="size-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
+          <div class="w-10 h-10 bg-gray-900 flex items-center justify-center">
+            <span class="text-white font-medium text-lg">S</span>
           </div>
           <div class="hidden sm:block">
-            <h1 class="text-xl font-bold text-gray-900">Salt Life Detail</h1>
-            <p class="text-xs text-gray-500">Marine Detailing Experts</p>
+            <h1 class="text-xl font-medium text-gray-900 tracking-tight">Salt Life Detail</h1>
+            <p class="text-xs text-gray-500 font-light tracking-wide uppercase">Marine Experts</p>
           </div>
         </a>
       </div>
@@ -71,33 +86,36 @@ const navItems = [
           <div class="relative group">
             <a 
               href={item.href}
-              class={`flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
-                currentPath.startsWith(item.href) 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              class={`flex items-center px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                isActive(item.href, currentPath) 
+                  ? 'text-gray-900 border-b-2 border-gray-900' 
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               {item.label}
               {item.badge && (
-                <span class="ml-2 px-2 py-1 text-xs font-medium text-blue-600 bg-blue-100 rounded-full">
+                <span class="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 font-medium">
                   {item.badge}
                 </span>
               )}
               {item.dropdown && (
-                <svg class="ml-1 size-4 text-gray-400 group-hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
               )}
             </a>
-
-            <!-- Dropdown Menu -->
+            
             {item.dropdown && (
-              <div class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="absolute left-0 mt-1 w-56 bg-white border border-gray-200 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div class="py-2">
                   {item.dropdown.map((dropdownItem) => (
                     <a 
                       href={dropdownItem.href}
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                      class={`block px-4 py-2 text-sm transition-colors duration-150 ${
+                        isActive(dropdownItem.href, currentPath)
+                          ? 'bg-gray-100 text-gray-900 font-medium'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      }`}
                     >
                       {dropdownItem.label}
                     </a>
@@ -107,75 +125,71 @@ const navItems = [
             )}
           </div>
         ))}
-      </nav>
-
-      <!-- CTA Button -->
-      <div class="hidden lg:flex items-center space-x-4">
-        <a 
-          href="/newsletter"
-          class="px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100 transition-colors duration-200"
-        >
-          Newsletter
-        </a>
+        
+        <!-- Contact Button -->
         <a 
           href="/contact"
-          class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors duration-200"
+          class="bg-gray-900 text-white px-6 py-2 text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
         >
-          Contact Us
+          Contact
         </a>
-      </div>
+      </nav>
 
       <!-- Mobile menu button -->
       <div class="lg:hidden">
         <button 
           type="button" 
-          class="mobile-menu-button p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors duration-200"
-          aria-expanded="false"
-          aria-label="Toggle navigation menu"
+          class="mobile-menu-button text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900"
+          aria-label="Open main menu"
         >
-          <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path class="hamburger-line" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            <path class="close-line hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
       </div>
     </div>
+  </div>
 
-    <!-- Mobile Navigation Menu -->
-    <div class="mobile-menu hidden lg:hidden border-t border-gray-200 bg-white">
-      <div class="py-4 space-y-2">
+  <!-- Mobile Navigation Menu -->
+  <div class="mobile-menu hidden lg:hidden bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="py-4 space-y-4">
         {navItems.map((item) => (
           <div>
             <a 
               href={item.href}
-              class={`flex items-center justify-between px-4 py-2 text-base font-medium rounded-md transition-colors duration-200 ${
-                currentPath.startsWith(item.href) 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              class={`flex items-center justify-between py-2 text-base font-medium ${
+                isActive(item.href, currentPath)
+                  ? 'text-gray-900'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               <span class="flex items-center">
                 {item.label}
                 {item.badge && (
-                  <span class="ml-2 px-2 py-1 text-xs font-medium text-blue-600 bg-blue-100 rounded-full">
+                  <span class="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 font-medium">
                     {item.badge}
                   </span>
                 )}
               </span>
               {item.dropdown && (
-                <svg class="size-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="dropdown-arrow w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
               )}
             </a>
             
-            {/* Mobile dropdown items */}
             {item.dropdown && (
-              <div class="ml-4 mt-2 space-y-1">
+              <div class="dropdown-content hidden pl-4 mt-2 space-y-2">
                 {item.dropdown.map((dropdownItem) => (
                   <a 
                     href={dropdownItem.href}
-                    class="block px-4 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-150"
+                    class={`block py-1 text-sm ${
+                      isActive(dropdownItem.href, currentPath)
+                        ? 'text-gray-900 font-medium'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
                   >
                     {dropdownItem.label}
                   </a>
@@ -185,17 +199,11 @@ const navItems = [
           </div>
         ))}
         
-        <!-- Mobile CTA buttons -->
-        <div class="pt-4 space-y-2">
-          <a 
-            href="/newsletter"
-            class="block w-full text-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100 transition-colors duration-200"
-          >
-            Newsletter
-          </a>
+        <!-- Mobile Contact Button -->
+        <div class="pt-4 border-t border-gray-200">
           <a 
             href="/contact"
-            class="block w-full text-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors duration-200"
+            class="block w-full text-center bg-gray-900 text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
           >
             Contact Us
           </a>
@@ -206,32 +214,98 @@ const navItems = [
 </header>
 
 <script>
-  // Mobile menu toggle
   document.addEventListener('DOMContentLoaded', function() {
-    const button = document.querySelector('.mobile-menu-button');
-    const menu = document.querySelector('.mobile-menu');
-    const hamburgerLine = document.querySelector('.hamburger-line');
-    const closeLine = document.querySelector('.close-line');
-
-    if (button && menu) {
-      button.addEventListener('click', function() {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    
+    // Mobile menu toggle
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        const isOpen = !mobileMenu.classList.contains('hidden');
         
-        button.setAttribute('aria-expanded', !expanded);
-        menu.classList.toggle('hidden');
-        hamburgerLine.classList.toggle('hidden');
-        closeLine.classList.toggle('hidden');
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          menuIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuIcon?.classList.add('hidden');
+          closeIcon?.classList.remove('hidden');
+        }
       });
     }
-
+    
+    // Mobile dropdown toggles
+    const mobileDropdowns = mobileMenu?.querySelectorAll('a[class*="justify-between"]');
+    mobileDropdowns?.forEach(dropdown => {
+      if (dropdown.querySelector('svg')) {
+        dropdown.addEventListener('click', function(e) {
+          const hasDropdown = this.nextElementSibling?.classList.contains('dropdown-content');
+          if (hasDropdown) {
+            e.preventDefault();
+            const content = this.nextElementSibling;
+            const arrow = this.querySelector('.dropdown-arrow');
+            
+            if (content.classList.contains('hidden')) {
+              content.classList.remove('hidden');
+              arrow?.classList.add('rotate-180');
+            } else {
+              content.classList.add('hidden');
+              arrow?.classList.remove('rotate-180');
+            }
+          }
+        });
+      }
+    });
+    
     // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-      if (!button.contains(event.target) && !menu.contains(event.target)) {
-        menu.classList.add('hidden');
-        button.setAttribute('aria-expanded', 'false');
-        hamburgerLine.classList.remove('hidden');
-        closeLine.classList.add('hidden');
+    document.addEventListener('click', function(e) {
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        const isClickInsideMenu = mobileMenu.contains(e.target as Node);
+        const isClickOnButton = mobileMenuButton?.contains(e.target as Node);
+        
+        if (!isClickInsideMenu && !isClickOnButton) {
+          mobileMenu.classList.add('hidden');
+          menuIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+        }
+      }
+    });
+    
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        menuIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
       }
     });
   });
 </script>
+
+<style>
+  /* Smooth transitions for desktop dropdowns */
+  .group:hover .group-hover\:opacity-100 {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Mobile menu animations */
+  .mobile-menu {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Active link indicators */
+  .border-b-2 {
+    border-bottom-width: 2px;
+  }
+  
+  /* Backdrop blur support */
+  @supports (backdrop-filter: blur(12px)) {
+    .backdrop-blur-md {
+      backdrop-filter: blur(12px);
+    }
+  }
+</style>

@@ -1,0 +1,306 @@
+---
+// src/pages/reviews/interior-care/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categoryData = {
+  title: "Marine Interior Care Product Reviews",
+  description: "Expert reviews of marine interior care products for vinyl, leather, fabric, and dashboard surfaces. Find the best products to protect boat interiors from UV and salt damage.",
+  category: "Interior Care",
+  totalProducts: 14
+};
+
+const featuredProducts = [
+  {
+    name: "303 Aerospace Protectant",
+    brand: "303 Products",
+    rating: 4.8,
+    price: "$16.99",
+    excerpt: "Premier UV protectant for vinyl, plastic, and rubber surfaces with non-greasy finish",
+    slug: "303-aerospace-protectant",
+    category: "UV Protectants"
+  },
+  {
+    name: "Marine 31 Vinyl & Rubber Cleaner", 
+    brand: "Meguiar's",
+    rating: 4.7,
+    price: "$14.99",
+    excerpt: "Specialized cleaner for marine vinyl that removes stains without damage",
+    slug: "marine-31-vinyl-rubber-cleaner",
+    category: "Vinyl Cleaners"
+  },
+  {
+    name: "Star brite Mildew Stain Remover",
+    brand: "Star brite",
+    rating: 4.6,
+    price: "$12.99",
+    excerpt: "Powerful mildew and stain remover safe for marine fabrics and vinyl",
+    slug: "star-brite-mildew-stain-remover",
+    category: "Stain Removers"
+  },
+  {
+    name: "Chemical Guys Leather Conditioner",
+    brand: "Chemical Guys",
+    rating: 4.5,
+    price: "$18.99", 
+    excerpt: "Professional leather conditioner that prevents cracking in marine environments",
+    slug: "chemical-guys-leather-conditioner",
+    category: "Leather Care"
+  }
+];
+
+const subcategories = [
+  {
+    name: "Vinyl Care",
+    description: "Cleaners and protectants for marine vinyl surfaces",
+    count: 6,
+    slug: "vinyl-care",
+    surfaces: "Seats, cushions, covers"
+  },
+  {
+    name: "Leather Care",
+    description: "Specialized products for marine leather surfaces",
+    count: 3,
+    slug: "leather-care", 
+    surfaces: "Premium seating, trim"
+  },
+  {
+    name: "Fabric Care",
+    description: "Cleaners for marine carpets and fabric upholstery",
+    count: 3,
+    slug: "fabric-care",
+    surfaces: "Carpets, canvas, cushions"
+  },
+  {
+    name: "Dashboard & Trim",
+    description: "UV protectants for plastic and rubber components",
+    count: 2,
+    slug: "dashboard-trim",
+    surfaces: "Dashboards, trim pieces"
+  }
+];
+
+const interiorChallenges = [
+  {
+    challenge: "UV Damage",
+    description: "Florida sun causes fading and cracking",
+    solution: "Regular UV protectant application",
+    frequency: "Monthly"
+  },
+  {
+    challenge: "Mildew Growth",
+    description: "High humidity promotes mold and mildew",
+    solution: "Proper ventilation and anti-microbial cleaners",
+    frequency: "As needed"
+  },
+  {
+    challenge: "Salt Residue",
+    description: "Salt deposits from spray and wet gear",
+    solution: "Regular cleaning with marine-specific products",
+    frequency: "Weekly"
+  },
+  {
+    challenge: "Staining",
+    description: "Sunscreen, food, and beverage stains",
+    solution: "Immediate treatment with appropriate cleaners",
+    frequency: "Immediately"
+  }
+];
+---
+
+<BaseLayout 
+  title={categoryData.title}
+  description={categoryData.description}
+  keywords="marine interior cleaner reviews, boat vinyl care, marine upholstery care, UV protectant reviews"
+>
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center max-w-4xl mx-auto mb-12">
+        <div class="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 text-sm font-medium mb-6">
+          <span class="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+          Product Reviews
+        </div>
+        
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          {categoryData.category} Reviews
+        </h1>
+        
+        <p class="text-xl text-gray-600 font-light leading-relaxed">
+          {categoryData.description}
+        </p>
+        
+        <div class="flex justify-center items-center space-x-6 mt-8 text-sm text-gray-500">
+          <div class="flex items-center">
+            <span class="font-medium text-gray-900">{categoryData.totalProducts}</span>
+            <span class="ml-1">Products Tested</span>
+          </div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>UV Protection Focus</div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>Mildew Prevention</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-2xl font-light text-gray-900 mb-8 text-center">Interior Surface Types</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {subcategories.map((sub) => (
+          <a 
+            href={`/reviews/interior-care/${sub.slug}`}
+            class="bg-white border border-gray-200 p-6 hover:border-gray-300 hover:shadow-sm transition-all duration-300 group text-center"
+          >
+            <h3 class="font-medium text-gray-900 mb-2 group-hover:text-gray-700">
+              {sub.name}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-3 font-light">
+              {sub.description}
+            </p>
+            <div class="space-y-2">
+              <div class="text-xs text-gray-600 bg-gray-50 px-2 py-1 font-medium">
+                {sub.surfaces}
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-500 font-light">
+                  {sub.count} products
+                </span>
+                <span class="text-gray-400 group-hover:text-gray-600 transition-colors">→</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="text-3xl font-light text-gray-900">Interior Protection Essentials</h2>
+        <a href="/reviews/interior-care/all" class="text-gray-600 hover:text-gray-900 font-light">
+          View All {categoryData.totalProducts} →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {featuredProducts.map((product) => (
+          <article class="bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 group">
+            <div class="aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200 flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-white border border-gray-200 mx-auto mb-3 flex items-center justify-center">
+                  <span class="text-2xl font-bold text-gray-800">I</span>
+                </div>
+                <span class="text-xs text-gray-600 font-medium">{product.category}</span>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900 mb-1 group-hover:text-gray-700">
+                    {product.name}
+                  </h3>
+                  <p class="text-sm text-gray-500">{product.brand}</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-lg font-medium text-gray-900">{product.price}</div>
+                  <div class="flex items-center mt-1">
+                    <span class="text-gray-400 text-sm">★★★★★</span>
+                    <span class="ml-1 text-xs text-gray-500">{product.rating}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
+                {product.excerpt}
+              </p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-600 bg-gray-50 px-2 py-1 font-medium">
+                  {product.category}
+                </span>
+                <a 
+                  href={`/reviews/${product.slug}`}
+                  class="text-sm text-gray-900 hover:text-gray-600 font-medium"
+                >
+                  Read Review →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Florida Interior Challenges</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {interiorChallenges.map((item) => (
+          <div class="bg-white border border-gray-200 p-6">
+            <h3 class="font-medium text-gray-900 mb-3">{item.challenge}</h3>
+            <p class="text-sm text-gray-800 mb-4 font-light">
+              {item.description}
+            </p>
+            <div class="space-y-2">
+              <div class="text-xs font-medium text-gray-900">Solution:</div>
+              <div class="text-xs text-gray-800">{item.solution}</div>
+              <div class="text-xs text-gray-600 bg-gray-100 px-2 py-1 font-medium">
+                {item.frequency}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Interior Care Schedule</h2>
+      
+      <div class="bg-white border border-gray-200 p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Weekly Maintenance</h3>
+            <ul class="space-y-2 text-sm text-gray-800">
+              <li>• Vacuum all surfaces thoroughly</li>
+              <li>• Wipe down vinyl with damp microfiber</li>
+              <li>• Check for and treat any new stains</li>
+              <li>• Open hatches for ventilation</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Monthly Deep Clean</h3>
+            <ul class="space-y-2 text-sm text-gray-800">
+              <li>• Clean vinyl with marine-specific cleaner</li>
+              <li>• Apply UV protectant to all surfaces</li>
+              <li>• Condition leather if applicable</li>
+              <li>• Treat fabric with stain protection</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Seasonal Care</h3>
+            <ul class="space-y-2 text-sm text-gray-800">
+              <li>• Deep clean all upholstery</li>
+              <li>• Check and replace worn covers</li>
+              <li>• Anti-microbial treatment</li>
+              <li>• Inspect for UV damage</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-gray-50 border border-gray-200">
+          <p class="text-sm text-gray-800">
+            <strong>Pro Tip:</strong> Always test cleaners in an inconspicuous area first. Marine vinyl and fabric can react differently than automotive materials.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

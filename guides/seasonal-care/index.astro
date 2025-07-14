@@ -1,0 +1,74 @@
+// guides/seasonal-care/index.astro
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categoryData = {
+  title: "Seasonal Marine Care Guides",
+  description: "Essential seasonal maintenance guides for Southwest Florida boaters. Hurricane preparation, winter storage, and year-round care schedules.",
+  category: "Seasonal Care",
+  totalGuides: 8
+};
+
+const featuredGuides = [
+  {
+    title: "Hurricane Season Boat Preparation",
+    difficulty: "Intermediate",
+    readTime: "20 min read",
+    excerpt: "Complete checklist for protecting your vessel during Florida's hurricane season, from securing to post-storm recovery.",
+    slug: "hurricane-season-preparation",
+    season: "Summer"
+  },
+  {
+    title: "Winter Storage and Winterization",
+    difficulty: "Intermediate", 
+    readTime: "30 min read",
+    excerpt: "Proper storage techniques for boats during Florida's mild winter season and extended non-use periods.",
+    slug: "winter-storage-winterization",
+    season: "Winter"
+  },
+  {
+    title: "Spring Commissioning Checklist",
+    difficulty: "Beginner",
+    readTime: "25 min read",
+    excerpt: "Getting your boat ready for peak season after storage or minimal winter use.",
+    slug: "spring-commissioning-checklist",
+    season: "Spring"
+  }
+];
+
+const seasonalTopics = [
+  {
+    season: "Spring (March-May)",
+    focus: "Commissioning & Preparation",
+    tasks: ["Post-storage inspection", "System checks", "Deep cleaning"],
+    challenges: "Pollen, varying temperatures"
+  },
+  {
+    season: "Summer (June-August)",
+    focus: "Hurricane Prep & UV Protection", 
+    tasks: ["Storm preparation", "Increased UV protection", "Frequent cleaning"],
+    challenges: "Hurricane threats, extreme heat"
+  },
+  {
+    season: "Fall (September-November)",
+    focus: "Storm Recovery & Maintenance",
+    tasks: ["Post-storm assessment", "Damage repair", "Preparation for cooler weather"],
+    challenges: "Storm damage, high humidity"
+  },
+  {
+    season: "Winter (December-February)",
+    focus: "Storage & Reduced Use Care",
+    tasks: ["Storage preparation", "Minimal use maintenance", "System preservation"],
+    challenges: "Extended storage, reduced use"
+  }
+];
+---
+
+<BaseLayout 
+  title={categoryData.title}
+  description={categoryData.description}
+  keywords="seasonal boat care, hurricane preparation, winter boat storage, Florida seasonal maintenance"
+>
+  <!-- Header and content sections similar to other category pages -->
+  <!-- Include seasonal calendar, hurricane prep guides, storage tips -->
+</BaseLayout>

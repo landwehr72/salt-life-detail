@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Marine Microfiber Towels Reviews';
+const pageDescription = 'Coming soon: Reviews of the best microfiber towels for marine detailing and drying.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Marine Microfiber Towels"
+    description="We're testing various microfiber towels for different marine applications - drying, polishing, and detail work."
+    category="reviews"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'Tools & Equipment Overview',
+        href: '/reviews/tools-equipment',
+        description: 'Browse our current tool and equipment reviews'
+      },
+      {
+        title: 'Complete Cleaning Guide',
+        href: '/guides/complete-jetski-cleaning-guide',
+        description: 'Learn proper towel techniques for cleaning'
+      }
+    ]}
+  />
+</BaseLayout>

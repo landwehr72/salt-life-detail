@@ -1,63 +1,224 @@
 ---
 // src/components/marine/NewsletterSignup.astro
+export interface Props {
+  style?: 'inline' | 'footer' | 'sidebar';
+  title?: string;
+  description?: string;
+  placeholder?: string;
+  buttonText?: string;
+  showBenefits?: boolean;
+  className?: string;
+  theme?: 'light' | 'dark';
+}
+
+const {
+  style = 'inline',
+  title = 'Stay Informed',
+  description = 'Get weekly marine detailing tips and product reviews delivered to your inbox.',
+  placeholder = 'Enter your email address',
+  buttonText = 'Subscribe',
+  showBenefits = true,
+  className = '',
+  theme = 'dark'
+} = Astro.props;
+
+const isDark = theme === 'dark';
+const bgClass = isDark ? 'bg-gray-900' : 'bg-blue-600';
+const textClass = isDark ? 'text-white' : 'text-white';
+const subtextClass = isDark ? 'text-gray-300' : 'text-blue-100';
 ---
 
-<section class="py-16 bg-blue-600">
-  <div class="max-w-4xl mx-auto px-8 text-center">
-    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-      <h2 class="text-3xl font-bold text-white mb-4">
-        Stay Ahead of the Tide
-      </h2>
-      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-        Get weekly marine detailing tips, product reviews, and exclusive Florida boating insights delivered to your inbox.
-      </p>
+<div class={`newsletter-signup ${className}`} data-style={style}>
+  {style === 'inline' && (
+    <section class={`py-16 ${bgClass}`}>
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class={`text-3xl font-light ${textClass} mb-6`}>{title}</h2>
+        <p class={`text-lg ${subtextClass} mb-8 font-light max-w-2xl mx-auto`}>
+          {description}
+        </p>
+        
+        <div class="max-w-md mx-auto mb-6">
+          <form class="newsletter-form flex" data-newsletter-form>
+            <input 
+              type="email" 
+              name="email"
+              placeholder={placeholder}
+              required
+              class={`flex-1 px-6 py-4 ${isDark ? 'bg-gray-800 text-white placeholder-gray-400 border-gray-700' : 'bg-white/20 text-white placeholder-blue-200'} border-none focus:outline-none focus:ring-2 focus:ring-white/50`}
+            >
+            <button 
+              type="submit"
+              class={`${isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-white text-blue-600 hover:bg-blue-50'} px-8 py-4 font-medium transition-colors disabled:opacity-50`}
+              data-submit-btn
+            >
+              <span data-submit-text>{buttonText}</span>
+              <span data-submit-loading class="hidden">...</span>
+            </button>
+          </form>
+          
+          <!-- Success/Error Messages -->
+          <div data-success-message class="hidden mt-4 p-3 bg-green-100 text-green-800 text-sm rounded">
+            Thanks for subscribing! Check your email to confirm.
+          </div>
+          <div data-error-message class="hidden mt-4 p-3 bg-red-100 text-red-800 text-sm rounded">
+            Something went wrong. Please try again.
+          </div>
+        </div>
 
-      <!-- Newsletter form -->
-      <form class="max-w-md mx-auto mb-6">
-        <div class="flex flex-col sm:flex-row gap-3">
-          <input 
-            type="email" 
-            name="email"
-            placeholder="Enter your email address" 
-            required
-            class="flex-1 px-4 py-3 rounded-lg border-0 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50"
-          />
-          <button 
-            type="submit"
-            class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
-          >
-            Subscribe
-          </button>
-        </div>
-      </form>
+        {showBenefits && (
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div class={`text-center ${subtextClass}`}>
+              <div class="w-12 h-12 bg-white/20 mx-auto mb-3 rounded-full flex items-center justify-center">
+                <span class="text-white">📧</span>
+              </div>
+              <h3 class="font-medium mb-1">Weekly Reviews</h3>
+              <p class="text-sm opacity-90">New product testing results</p>
+            </div>
+            <div class={`text-center ${subtextClass}`}>
+              <div class="w-12 h-12 bg-white/20 mx-auto mb-3 rounded-full flex items-center justify-center">
+                <span class="text-white">🔧</span>
+              </div>
+              <h3 class="font-medium mb-1">Expert Tips</h3>
+              <p class="text-sm opacity-90">Professional detailing techniques</p>
+            </div>
+            <div class={`text-center ${subtextClass}`}>
+              <div class="w-12 h-12 bg-white/20 mx-auto mb-3 rounded-full flex items-center justify-center">
+                <span class="text-white">🎯</span>
+              </div>
+              <h3 class="font-medium mb-1">No Spam</h3>
+              <p class="text-sm opacity-90">Unsubscribe anytime</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
 
-      <!-- Benefits -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-blue-100">
-        <div class="flex items-center justify-center gap-2">
-          <svg class="size-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-          </svg>
-          <span>Weekly Tips</span>
+  {style === 'footer' && (
+    <div class="bg-gray-100 py-12">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-light text-gray-900 mb-4">{title}</h3>
+          <p class="text-gray-600 font-light max-w-2xl mx-auto">
+            {description}
+          </p>
         </div>
-        <div class="flex items-center justify-center gap-2">
-          <svg class="size-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-          </svg>
-          <span>Exclusive Reviews</span>
-        </div>
-        <div class="flex items-center justify-center gap-2">
-          <svg class="size-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-          </svg>
-          <span>No Spam Ever</span>
+        
+        <div class="max-w-md mx-auto">
+          <form class="newsletter-form flex border border-gray-300" data-newsletter-form>
+            <input 
+              type="email" 
+              name="email"
+              placeholder={placeholder}
+              required
+              class="flex-1 px-4 py-3 border-none focus:outline-none font-light"
+            >
+            <button 
+              type="submit"
+              class="bg-gray-900 text-white px-6 py-3 font-medium hover:bg-gray-800 transition-colors disabled:opacity-50"
+              data-submit-btn
+            >
+              <span data-submit-text>{buttonText}</span>
+              <span data-submit-loading class="hidden">...</span>
+            </button>
+          </form>
+          
+          <div data-success-message class="hidden mt-4 p-3 bg-green-100 text-green-800 text-sm text-center rounded">
+            Thanks for subscribing! Check your email to confirm.
+          </div>
+          <div data-error-message class="hidden mt-4 p-3 bg-red-100 text-red-800 text-sm text-center rounded">
+            Something went wrong. Please try again.
+          </div>
         </div>
       </div>
-
-      <!-- Privacy note -->
-      <p class="text-xs text-blue-200 mt-4">
-        We respect your privacy. Unsubscribe at any time. See our 
-        <a href="/privacy-policy" class="underline hover:no-underline">privacy policy</a>.
-      </p>
     </div>
-  </div>
-</section>
+  )}
+
+  {style === 'sidebar' && (
+    <div class="bg-blue-50 border border-blue-200 p-6">
+      <h3 class="text-lg font-medium text-blue-900 mb-4">{title}</h3>
+      <p class="text-sm text-blue-800 mb-4 font-light">
+        {description}
+      </p>
+      
+      <form class="newsletter-form space-y-3" data-newsletter-form>
+        <input 
+          type="email" 
+          name="email"
+          placeholder={placeholder}
+          required
+          class="w-full px-3 py-2 border border-blue-300 focus:outline-none focus:border-blue-500 text-sm"
+        >
+        <button 
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 text-sm font-medium hover:bg-blue-700 transition-colors disabled:opacity-50"
+          data-submit-btn
+        >
+          <span data-submit-text>{buttonText}</span>
+          <span data-submit-loading class="hidden">...</span>
+        </button>
+      </form>
+      
+      <div data-success-message class="hidden mt-3 p-2 bg-green-100 text-green-800 text-xs rounded">
+        Thanks for subscribing!
+      </div>
+      <div data-error-message class="hidden mt-3 p-2 bg-red-100 text-red-800 text-xs rounded">
+        Something went wrong. Please try again.
+      </div>
+    </div>
+  )}
+</div>
+
+<script>
+  // Newsletter form handling
+  document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('[data-newsletter-form]');
+    
+    forms.forEach(form => {
+      const submitBtn = form.querySelector('[data-submit-btn]');
+      const submitText = form.querySelector('[data-submit-text]');
+      const submitLoading = form.querySelector('[data-submit-loading]');
+      const successMessage = form.parentElement.querySelector('[data-success-message]');
+      const errorMessage = form.parentElement.querySelector('[data-error-message]');
+      
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.classList.add('hidden');
+        submitLoading.classList.remove('hidden');
+        
+        const email = form.querySelector('input[name="email"]').value;
+        
+        try {
+          // Simulate API call (replace with actual newsletter service)
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          
+          // Show success message
+          successMessage.classList.remove('hidden');
+          errorMessage.classList.add('hidden');
+          form.reset();
+          
+          // Track newsletter signup (replace with actual analytics)
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'newsletter_signup', {
+              'event_category': 'engagement',
+              'email': email
+            });
+          }
+          
+        } catch (error) {
+          console.error('Newsletter signup error:', error);
+          errorMessage.classList.remove('hidden');
+          successMessage.classList.add('hidden');
+        } finally {
+          // Reset button state
+          submitBtn.disabled = false;
+          submitText.classList.remove('hidden');
+          submitLoading.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

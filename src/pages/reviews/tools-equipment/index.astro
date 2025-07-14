@@ -1,0 +1,301 @@
+---
+// src/pages/reviews/tools-equipment/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categoryData = {
+  title: "Marine Detailing Tools & Equipment Reviews",
+  description: "Professional marine detailing tools and equipment tested for durability and performance in saltwater conditions. Find the best tools for boat care.",
+  category: "Tools & Equipment",
+  totalProducts: 25
+};
+
+const featuredProducts = [
+  {
+    name: "Rupes LHR15ES Random Orbital Polisher",
+    brand: "Rupes",
+    rating: 4.9,
+    price: "$299.00",
+    excerpt: "Professional-grade dual-action polisher perfect for marine gelcoat restoration and maintenance",
+    slug: "rupes-lhr15es-polisher",
+    category: "Polishers"
+  },
+  {
+    name: "Autofiber Saver Premium Microfiber Towels", 
+    brand: "Autofiber",
+    rating: 4.8,
+    price: "$45.99",
+    excerpt: "Professional-grade microfiber towels designed for marine applications with superior absorbency",
+    slug: "autofiber-saver-microfiber-towels",
+    category: "Microfiber"
+  },
+  {
+    name: "MJJC Foam Lance S V3.0",
+    brand: "MJJC",
+    rating: 4.7,
+    price: "$29.99",
+    excerpt: "Professional foam cannon with adjustable spray pattern and thick foam generation",
+    slug: "mjjc-foam-lance-v3",
+    category: "Foam Cannons"
+  },
+  {
+    name: "Shurhold Brush Collection",
+    brand: "Shurhold",
+    rating: 4.6,
+    price: "$19.99", 
+    excerpt: "Marine-specific brushes designed for different boat surfaces and cleaning tasks",
+    slug: "shurhold-brush-collection",
+    category: "Brushes"
+  }
+];
+
+const subcategories = [
+  {
+    name: "Polishers & Buffers",
+    description: "Professional-grade machines for gelcoat restoration",
+    count: 6,
+    slug: "polishers-buffers",
+    priceRange: "$150-$500"
+  },
+  {
+    name: "Microfiber & Towels",
+    description: "High-quality microfiber for marine applications",
+    count: 8,
+    slug: "microfiber-towels", 
+    priceRange: "$15-$60"
+  },
+  {
+    name: "Foam Cannons",
+    description: "Pre-wash foam application systems",
+    count: 4,
+    slug: "foam-cannons",
+    priceRange: "$25-$80"
+  },
+  {
+    name: "Brushes & Applicators",
+    description: "Specialized brushes for marine surfaces",
+    count: 7,
+    slug: "brushes-applicators",
+    priceRange: "$10-$40"
+  }
+];
+
+const toolCategories = [
+  {
+    icon: "T",
+    name: "Machine Polishers",
+    description: "For gelcoat restoration and maintenance",
+    essentialFor: "Oxidation removal, scratch repair"
+  },
+  {
+    icon: "H",
+    name: "Hand Tools",
+    description: "Brushes, applicators, and detail tools", 
+    essentialFor: "Precision cleaning, interior work"
+  },
+  {
+    icon: "H2O",
+    name: "Wash Equipment",
+    description: "Foam cannons, wash mitts, drying towels",
+    essentialFor: "Regular maintenance cleaning"
+  },
+  {
+    icon: "S",
+    name: "Specialty Tools",
+    description: "Hull scrapers, water spot removers",
+    essentialFor: "Problem-specific solutions"
+  }
+];
+---
+
+<BaseLayout 
+  title={categoryData.title}
+  description={categoryData.description}
+  keywords="marine detailing tools, boat polisher reviews, microfiber towel reviews, foam cannon reviews"
+>
+  <section class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center max-w-4xl mx-auto mb-12">
+        <div class="inline-flex items-center bg-gray-100 text-gray-800 px-4 py-2 text-sm font-medium mb-6">
+          <span class="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+          Product Reviews
+        </div>
+        
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          {categoryData.category} Reviews
+        </h1>
+        
+        <p class="text-xl text-gray-600 font-light leading-relaxed">
+          {categoryData.description}
+        </p>
+        
+        <div class="flex justify-center items-center space-x-6 mt-8 text-sm text-gray-500">
+          <div class="flex items-center">
+            <span class="font-medium text-gray-900">{categoryData.totalProducts}</span>
+            <span class="ml-1">Tools Tested</span>
+          </div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>Professional Grade</div>
+          <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+          <div>Marine Specific</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-2xl font-light text-gray-900 mb-8 text-center">Tool Categories</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {toolCategories.map((category) => (
+          <div class="bg-white border border-gray-200 p-6 text-center">
+            <div class="text-4xl mb-4">{category.icon}</div>
+            <h3 class="font-medium text-gray-900 mb-2">
+              {category.name}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-3 font-light">
+              {category.description}
+            </p>
+            <div class="text-xs text-gray-600 bg-gray-50 px-2 py-1 font-medium">
+              {category.essentialFor}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-2xl font-light text-gray-900 mb-8 text-center">Browse by Type</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {subcategories.map((sub) => (
+          <a 
+            href={`/reviews/tools-equipment/${sub.slug}`}
+            class="bg-white border border-gray-200 p-6 hover:border-gray-300 hover:shadow-sm transition-all duration-300 group text-center"
+          >
+            <h3 class="font-medium text-gray-900 mb-2 group-hover:text-gray-700">
+              {sub.name}
+            </h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-3 font-light">
+              {sub.description}
+            </p>
+            <div class="space-y-2">
+              <div class="text-xs text-gray-600 bg-gray-50 px-2 py-1 font-medium">
+                {sub.priceRange}
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-500 font-light">
+                  {sub.count} products
+                </span>
+                <span class="text-gray-400 group-hover:text-gray-600 transition-colors">→</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="text-3xl font-light text-gray-900">Professional Favorites</h2>
+        <a href="/reviews/tools-equipment/all" class="text-gray-600 hover:text-gray-900 font-light">
+          View All {categoryData.totalProducts} →
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {featuredProducts.map((product) => (
+          <article class="bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 group">
+            <div class="aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200 flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-white border border-gray-200 mx-auto mb-3 flex items-center justify-center">
+                  <span class="text-2xl font-bold text-gray-800">T</span>
+                </div>
+                <span class="text-xs text-gray-600 font-medium">{product.category}</span>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900 mb-1 group-hover:text-gray-700">
+                    {product.name}
+                  </h3>
+                  <p class="text-sm text-gray-500">{product.brand}</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-lg font-medium text-gray-900">{product.price}</div>
+                  <div class="flex items-center mt-1">
+                    <span class="text-gray-400 text-sm">★★★★★</span>
+                    <span class="ml-1 text-xs text-gray-500">{product.rating}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
+                {product.excerpt}
+              </p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-600 bg-gray-50 px-2 py-1 font-medium">
+                  {product.category}
+                </span>
+                <a 
+                  href={`/reviews/${product.slug}`}
+                  class="text-sm text-gray-900 hover:text-gray-600 font-medium"
+                >
+                  Read Review →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Essential Tool Kit</h2>
+      
+      <div class="bg-white border border-gray-200 p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Beginner Kit ($100-200)</h3>
+            <ul class="space-y-2 text-sm text-gray-800">
+              <li>• Quality microfiber towels (6-pack)</li>
+              <li>• Foam cannon for pressure washer</li>
+              <li>• Wash mitt and drying chamois</li>
+              <li>• Basic brush set for detail work</li>
+              <li>• Two-bucket wash system</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Intermediate Kit ($300-500)</h3>
+            <ul class="space-y-2 text-sm text-gray-800">
+              <li>• Dual-action polisher (entry level)</li>
+              <li>• Polishing pads (various grades)</li>
+              <li>• Premium microfiber collection</li>
+              <li>• Specialty brushes for different surfaces</li>
+              <li>• LED inspection light</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-medium text-gray-900 mb-4">Professional Kit ($800+)</h3>
+            <ul class="space-y-2 text-sm text-gray-800">
+              <li>• Professional polisher (Rupes/Flex)</li>
+              <li>• Complete pad and backing plate set</li>
+              <li>• Commercial-grade microfiber</li>
+              <li>• Specialized marine tools</li>
+              <li>• Paint thickness gauge</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

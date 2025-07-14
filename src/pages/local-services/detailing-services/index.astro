@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Local Marine Detailing Services Directory';
+const pageDescription = 'Coming soon: Directory of professional marine detailing services in your area.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Local Detailing Services"
+    description="We're building a comprehensive directory of vetted marine detailing professionals across Florida and beyond."
+    category="local-services"
+    estimatedDate="Coming in Q4 2025"
+    relatedPages={[
+      {
+        title: 'Local Services Overview',
+        href: '/local-services',
+        description: 'Learn about our local services directory'
+      },
+      {
+        title: 'DIY Guides',
+        href: '/guides',
+        description: 'Try professional techniques yourself'
+      }
+    ]}
+  />
+</BaseLayout>

@@ -1,0 +1,157 @@
+---
+// src/components/marine/ComingSoon.astro
+export interface Props {
+  title: string;
+  description?: string;
+  category?: 'reviews' | 'guides' | 'buying-guides' | 'local-services';
+  estimatedDate?: string;
+  relatedPages?: Array<{
+    title: string;
+    href: string;
+    description: string;
+  }>;
+  showNewsletter?: boolean;
+}
+
+const {
+  title,
+  description = 'We\'re working hard to bring you comprehensive content in this section.',
+  category = 'reviews',
+  estimatedDate,
+  relatedPages = [],
+  showNewsletter = true
+} = Astro.props;
+
+const categoryInfo = {
+  reviews: {
+    name: 'Product Reviews',
+    defaultDescription: 'Detailed reviews of marine detailing products are coming soon. We\'re testing the best products to help you make informed decisions.'
+  },
+  guides: {
+    name: 'How-To Guides',
+    defaultDescription: 'Step-by-step guides for marine detailing are coming soon. We\'re creating comprehensive tutorials to help you maintain your boat like a pro.'
+  },
+  'buying-guides': {
+    name: 'Buying Guides',
+    defaultDescription: 'Expert buying guides are coming soon. We\'re researching the best products in each category to help you choose wisely.'
+  },
+  'local-services': {
+    name: 'Local Services',
+    defaultDescription: 'Local service directory is coming soon. We\'re building a comprehensive database of marine detailing services in your area.'
+  }
+};
+
+const info = categoryInfo[category];
+---
+
+<section class="coming-soon-section py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-8 text-center">
+    <!-- Category -->
+    <div class="mb-8">
+      <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">
+        {info.name}
+      </span>
+    </div>
+
+    <!-- Main Content -->
+    <h1 class="text-4xl font-light text-gray-900 mb-6">
+      {title}
+    </h1>
+    
+    <p class="text-xl text-gray-600 font-light max-w-2xl mx-auto mb-8">
+      {description || info.defaultDescription}
+    </p>
+
+    {estimatedDate && (
+      <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 max-w-md mx-auto">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Expected Launch</h3>
+        <p class="text-gray-800 font-light">{estimatedDate}</p>
+      </div>
+    )}
+
+    <!-- Progress Indicator -->
+    <div class="mb-12">
+      <div class="bg-white rounded-lg p-6 shadow-sm border">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Development Progress</h3>
+        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+          <div class="bg-gray-900 h-2 rounded-full" style="width: 75%"></div>
+        </div>
+        <p class="text-sm text-gray-600">Content creation in progress • Research phase complete</p>
+      </div>
+    </div>
+
+    <!-- Related Content -->
+    {relatedPages.length > 0 && (
+      <div class="mb-12">
+        <h3 class="text-2xl font-light text-gray-900 mb-6">While You Wait</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          {relatedPages.map((page) => (
+            <a 
+              href={page.href}
+              class="bg-white border border-gray-200 p-6 rounded-lg hover:shadow-md transition-shadow group"
+            >
+              <h4 class="text-lg font-medium text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
+                {page.title}
+              </h4>
+              <p class="text-gray-600 font-light text-sm">
+                {page.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Newsletter Signup -->
+    {showNewsletter && (
+      <div class="bg-white border border-gray-200 rounded-lg p-8">
+        <h3 class="text-xl font-medium text-gray-900 mb-4">Get Notified When This Section Launches</h3>
+        <p class="text-gray-600 font-light mb-6">
+          Be the first to know when we publish new content in this section.
+        </p>
+        <form class="max-w-md mx-auto flex gap-3">
+          <input 
+            type="email" 
+            placeholder="Enter your email"
+            class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 transition-colors"
+            required
+          >
+          <button 
+            type="submit"
+            class="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors"
+          >
+            Notify Me
+          </button>
+        </form>
+      </div>
+    )}
+
+    <!-- Back Navigation -->
+    <div class="mt-12">
+      <a 
+        href="javascript:history.back()"
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 font-light transition-colors"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Go Back
+      </a>
+      <span class="mx-4 text-gray-400">•</span>
+      <a 
+        href="/"
+        class="text-gray-600 hover:text-gray-900 font-light transition-colors"
+      >
+        Return Home
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .coming-soon-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+</style>

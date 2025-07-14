@@ -1,0 +1,46 @@
+// guides/problem-solving/index.astro
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const categoryData = {
+  title: "Marine Problem Solving Guides",
+  description: "Expert solutions for common boat maintenance problems. Troubleshooting guides for stains, damage, and performance issues.",
+  category: "Problem Solving",
+  totalGuides: 12
+};
+
+const problemCategories = [
+  {
+    problem: "Gelcoat Issues",
+    description: "Oxidation, scratches, fading, and surface damage",
+    guides: 4,
+    difficulty: "Intermediate-Advanced"
+  },
+  {
+    problem: "Stains & Discoloration",
+    description: "Rust, water spots, mineral deposits, organic stains",
+    guides: 3,
+    difficulty: "Beginner-Intermediate"
+  },
+  {
+    problem: "Interior Problems",
+    description: "Mildew, vinyl damage, fabric stains, odors",
+    guides: 3,
+    difficulty: "Beginner-Intermediate"
+  },
+  {
+    problem: "System Issues",
+    description: "Corrosion, buildup, performance degradation",
+    guides: 2,
+    difficulty: "Intermediate"
+  }
+];
+---
+
+<BaseLayout 
+  title={categoryData.title}
+  description={categoryData.description}
+  keywords="boat problem solving, marine troubleshooting, gelcoat repair, stain removal"
+>
+  <!-- Problem diagnosis flowcharts, before/after examples, step-by-step solutions -->
+</BaseLayout>

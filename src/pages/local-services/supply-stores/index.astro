@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Local Marine Supply Stores Directory';
+const pageDescription = 'Coming soon: Directory of marine supply stores for detailing products and equipment.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Local Supply Stores"
+    description="We're mapping the best local sources for marine detailing products, from specialty shops to marine chandleries."
+    category="local-services"
+    estimatedDate="Coming in Q4 2025"
+    relatedPages={[
+      {
+        title: 'Local Services Overview',
+        href: '/local-services',
+        description: 'Learn about our local services directory'
+      },
+      {
+        title: 'Product Reviews',
+        href: '/reviews',
+        description: 'See what products we recommend'
+      }
+    ]}
+  />
+</BaseLayout>

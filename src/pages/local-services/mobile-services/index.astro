@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Mobile Marine Detailing Services';
+const pageDescription = 'Coming soon: Directory of mobile marine detailing services that come to your location.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Mobile Marine Services"
+    description="We're compiling a directory of mobile marine detailing professionals who provide convenient on-site services at your dock or marina."
+    category="local-services"
+    estimatedDate="Coming in Q4 2025"
+    relatedPages={[
+      {
+        title: 'Local Services Overview',
+        href: '/local-services',
+        description: 'Learn about our local services directory'
+      },
+      {
+        title: 'DIY Guides',
+        href: '/guides',
+        description: 'Learn to detail your boat yourself'
+      }
+    ]}
+  />
+</BaseLayout>

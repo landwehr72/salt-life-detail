@@ -1,0 +1,266 @@
+---
+// src/pages/faq.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FAQ from "@/components/marine/FAQ.astro";
+import FAQSchema from "@/components/seo/FAQSchema.astro";
+
+const faqData = [
+  // Products & Equipment
+  {
+    question: "What's the difference between marine soap and regular car soap?",
+    answer: "Marine soaps are specifically formulated for saltwater environments. They're pH-neutral to protect gelcoat and won't leave residues that attract salt. Car soaps often contain additives that can damage marine surfaces or create films that hold salt against your boat.",
+    category: "Products"
+  },
+  {
+    question: "Do I really need marine-specific products, or can I use household cleaners?",
+    answer: "Marine-specific products are essential for boats. Household cleaners are often too harsh for gelcoat and can cause permanent damage. They may also contain phosphates or other chemicals that are harmful to marine environments. Products like Starke Pure Clean are formulated specifically for boat surfaces and saltwater conditions.",
+    category: "Products"
+  },
+  {
+    question: "How often should I replace my microfiber cloths?",
+    answer: "Replace microfiber cloths when they become rough, lose absorbency, or start leaving lint. With proper care (washing without fabric softener), quality marine microfiber cloths should last 6-12 months of regular use. Always have separate cloths for different tasks - washing, drying, and waxing.",
+    category: "Products"
+  },
+  {
+    question: "What's the best way to apply ceramic coating to a boat?",
+    answer: "Ceramic coating application requires perfect preparation: clean, decontaminate, polish if needed, then apply in thin, even coats. Work in small sections (2x2 feet), avoid direct sunlight, and maintain 60-80°F temperature. Products like Starke Repel Pro require specific humidity conditions. Consider professional application for best results.",
+    category: "Products"
+  },
+
+  // Techniques & Methods
+  {
+    question: "Should I wash my boat from top to bottom or bottom to top?",
+    answer: "Always wash from top to bottom. This prevents dirty water from upper surfaces dripping onto already-cleaned lower areas. Start with the hardtop/bimini, then windscreen, hull sides, and finish with the waterline and bottom. Use the two-bucket method with grit guards.",
+    category: "Techniques"
+  },
+  {
+    question: "How do I remove stubborn water spots from gelcoat?",
+    answer: "For light water spots, use a vinegar solution (50/50 with water) and microfiber cloth. For heavy mineral deposits, use a marine-specific water spot remover or mild polishing compound. Always test in an inconspicuous area first. Prevention is key - dry your boat immediately after washing or rain.",
+    category: "Techniques"
+  },
+  {
+    question: "What's the proper way to clean boat seats and upholstery?",
+    answer: "Vacuum first to remove debris. Use marine-specific vinyl/fabric cleaners - never household products. Work in sections, spray cleaner, agitate gently with soft brush, then wipe clean. For mildew, use a 10:1 water-to-bleach solution, rinse thoroughly, and apply UV protectant.",
+    category: "Techniques"
+  },
+  {
+    question: "How do I clean and maintain my boat's stainless steel?",
+    answer: "Clean stainless steel weekly with fresh water and marine soap. For stubborn stains, use specialized stainless steel cleaners. Always wipe in the direction of the grain. Apply marine-grade stainless steel polish monthly to prevent corrosion and maintain shine. Never use abrasive cleaners or steel wool.",
+    category: "Techniques"
+  },
+
+  // Frequency & Maintenance
+  {
+    question: "How often should I wash my boat?",
+    answer: "Rinse with fresh water after every saltwater use. Deep clean weekly if used regularly, bi-weekly for occasional use. In Florida's environment, more frequent cleaning prevents salt damage and makes each cleaning easier. A quick rinse takes 5 minutes but saves hours of restoration work later.",
+    category: "Maintenance"
+  },
+  {
+    question: "When should I wax my boat?",
+    answer: "Wax every 3-4 months in Florida's intense UV environment. Test by spraying water on the surface - if it doesn't bead well, it's time to wax. Boats with ceramic coatings need less frequent waxing but benefit from ceramic booster sprays every 6-8 weeks.",
+    category: "Maintenance"
+  },
+  {
+    question: "How do I know if my boat needs polishing or just waxing?",
+    answer: "Run your hand over the surface after washing. If it feels rough or chalky, you need polishing compound first. If the gelcoat looks dull but feels smooth, waxing may be sufficient. Oxidation (chalky white residue) always requires polishing before waxing.",
+    category: "Maintenance"
+  },
+  {
+    question: "What's the best maintenance schedule for a boat in Southwest Florida?",
+    answer: "Weekly: Fresh water rinse, monthly: Deep clean and inspect, quarterly: Wax/seal, annually: Polish if needed. During hurricane season (June-November), increase frequency due to humidity and rain. Always clean immediately after storms or extended periods without use.",
+    category: "Maintenance"
+  },
+
+  // Local Conditions
+  {
+    question: "How does Florida's climate affect boat maintenance?",
+    answer: "Florida's intense UV, high humidity, and frequent rain create unique challenges. UV breaks down waxes faster, humidity promotes mold/mildew, and afternoon thunderstorms leave mineral deposits. Increase cleaning frequency, use UV-resistant products, and always dry thoroughly after rain.",
+    category: "Local Conditions"
+  },
+  {
+    question: "Should I cover my boat in Florida?",
+    answer: "Yes, especially during summer. A quality boat cover protects from UV, bird droppings, and rain. Ensure proper ventilation to prevent mold. During hurricane season, secure covers properly or remove them before storms. Covers extend the life of upholstery and reduce cleaning frequency.",
+    category: "Local Conditions"
+  },
+  {
+    question: "How do I prepare my boat for hurricane season?",
+    answer: "Clean thoroughly and apply protective coatings before season starts. Create a hurricane plan: secure loose items, document condition with photos, know your haul-out plan. During warnings: add extra dock lines, remove canvas, and follow your marina's protocols. Clean immediately after storms pass.",
+    category: "Local Conditions"
+  },
+
+  // Common Problems
+  {
+    question: "Why does my boat get dirty so quickly after cleaning?",
+    answer: "Usually due to inadequate rinsing (soap residue attracts dirt), missing wax protection, or using the wrong products. Ensure complete soap removal, maintain wax protection, and use marine-specific cleaners. Boats without protection are magnets for salt and grime.",
+    category: "Problems"
+  },
+  {
+    question: "How do I remove algae and scum from my boat's waterline?",
+    answer: "Use a marine hull cleaner specifically designed for waterline stains. Apply when the boat is out of water if possible. For stubborn algae, use a soft brush with the cleaner. Never use abrasive compounds on the waterline - they can damage gelcoat and create more places for growth to attach.",
+    category: "Problems"
+  },
+  {
+    question: "What causes gelcoat oxidation and how do I prevent it?",
+    answer: "UV rays break down gelcoat's surface, causing the chalky appearance called oxidation. Prevention: regular waxing, boat covers, and UV-protectant products. Once oxidized, the damaged layer must be polished away and new protection applied. Neglected oxidation can penetrate deep enough to require professional restoration.",
+    category: "Problems"
+  },
+  {
+    question: "Why do I get water spots even after using distilled water?",
+    answer: "Water spots can form from air-borne contaminants, soap residue, or drying too slowly in humid conditions. Even distilled water can pick up minerals from the air. Dry quickly with quality chamois or microfiber, work in shade, and ensure all soap is completely rinsed away.",
+    category: "Problems"
+  }
+];
+
+const categories = ["Products", "Techniques", "Maintenance", "Local Conditions", "Problems"];
+---
+
+<BaseLayout 
+  title="Marine Detailing FAQ | Expert Answers | Salt Life Detail"
+  description="Get expert answers to common marine detailing questions. Learn proper techniques, product recommendations, and maintenance schedules for Southwest Florida boats."
+  keywords="marine detailing FAQ, boat cleaning questions, marine maintenance tips, Florida boat care"
+>
+  <!-- FAQ Schema for SEO -->
+  <FAQSchema faqs={faqData} />
+
+  <!-- Header Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          Marine Detailing FAQ
+        </h1>
+        <p class="text-xl text-gray-600 font-light leading-relaxed max-w-3xl mx-auto">
+          Expert answers to the most common questions about marine detailing, product selection, and maintenance techniques for Southwest Florida's challenging marine environment.
+        </p>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="text-center bg-gray-50 border border-gray-200 p-6">
+          <div class="text-3xl font-bold text-gray-600 mb-2">{faqData.length}</div>
+          <div class="text-sm text-gray-800 font-medium">Expert Answers</div>
+        </div>
+        <div class="text-center bg-gray-50 border border-gray-200 p-6">
+          <div class="text-3xl font-bold text-gray-600 mb-2">6+</div>
+          <div class="text-sm text-gray-800 font-medium">Years Experience</div>
+        </div>
+        <div class="text-center bg-gray-50 border border-gray-200 p-6">
+          <div class="text-3xl font-bold text-gray-600 mb-2">SW FL</div>
+          <div class="text-sm text-gray-800 font-medium">Local Expertise</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Component -->
+  <section class="py-16 bg-gray-50">
+    <FAQ 
+      faqs={faqData}
+      title="Common Questions & Expert Answers"
+      description="Search through our comprehensive FAQ database or browse by category to find exactly what you need."
+      showSearch={true}
+      categories={categories}
+      style="default"
+    />
+  </section>
+
+  <!-- Quick Tips Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-12 text-center">Quick Reference Tips</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-gray-50 border border-gray-200 p-6 text-center">
+          <div class="w-12 h-12 bg-gray-600 text-white mx-auto mb-4 flex items-center justify-center font-bold">
+            pH
+          </div>
+          <h3 class="font-medium text-gray-900 mb-2">pH Neutral Only</h3>
+          <p class="text-sm text-gray-800">
+            Always use pH 6.5-7.5 products to protect gelcoat and coatings
+          </p>
+        </div>
+        
+        <div class="bg-gray-50 border border-gray-200 p-6 text-center">
+          <div class="w-12 h-12 bg-gray-600 text-white mx-auto mb-4 flex items-center justify-center">
+            H2O
+          </div>
+          <h3 class="font-medium text-gray-900 mb-2">Fresh Water Rinse</h3>
+          <p class="text-sm text-gray-800">
+            Rinse immediately after every saltwater use - no exceptions
+          </p>
+        </div>
+        
+        <div class="bg-gray-50 border border-gray-200 p-6 text-center">
+          <div class="w-12 h-12 bg-gray-600 text-white mx-auto mb-4 flex items-center justify-center">
+            SUN
+          </div>
+          <h3 class="font-medium text-gray-900 mb-2">Avoid Direct Sun</h3>
+          <p class="text-sm text-gray-800">
+            Clean and wax in shade during cooler parts of the day
+          </p>
+        </div>
+        
+        <div class="bg-gray-50 border border-gray-200 p-6 text-center">
+          <div class="w-12 h-12 bg-gray-600 text-white mx-auto mb-4 flex items-center justify-center">
+            2B
+          </div>
+          <h3 class="font-medium text-gray-900 mb-2">Two Bucket Method</h3>
+          <p class="text-sm text-gray-800">
+            Always use wash and rinse buckets with grit guards
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expert Contact CTA -->
+  <section class="py-16 bg-gray-900">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl font-light text-white mb-6">Need Personalized Advice?</h2>
+      <p class="text-lg text-gray-300 mb-8 font-light">
+        Every boat and situation is unique. Get personalized recommendations based on your specific needs, boat type, and usage patterns.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/contact"
+          class="bg-white text-gray-900 px-8 py-4 font-medium hover:bg-gray-100 transition-colors"
+        >
+          Contact Our Experts
+        </a>
+        <a 
+          href="/reviews"
+          class="border border-white text-white px-8 py-4 font-medium hover:bg-white hover:text-gray-900 transition-colors"
+        >
+          Browse Product Reviews
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Content -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Helpful Resources</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/guides" class="bg-white border border-gray-200 p-6 hover:border-gray-300 transition-colors group">
+          <h3 class="font-medium text-gray-900 mb-2 group-hover:text-gray-700">How-To Guides</h3>
+          <p class="text-sm text-gray-600 font-light">
+            Step-by-step tutorials for common marine detailing tasks
+          </p>
+        </a>
+        <a href="/buying-guides" class="bg-white border border-gray-200 p-6 hover:border-gray-300 transition-colors group">
+          <h3 class="font-medium text-gray-900 mb-2 group-hover:text-gray-700">Buying Guides</h3>
+          <p class="text-sm text-gray-600 font-light">
+            Product comparisons and recommendations for every budget
+          </p>
+        </a>
+        <a href="/local-services" class="bg-white border border-gray-200 p-6 hover:border-gray-300 transition-colors group">
+          <h3 class="font-medium text-gray-900 mb-2 group-hover:text-gray-700">Local Services</h3>
+          <p class="text-sm text-gray-600 font-light">
+            Trusted marine detailing services in Southwest Florida
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

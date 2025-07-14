@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Marine Degreasers Reviews';
+const pageDescription = 'Coming soon: Comprehensive reviews of the best marine degreasers for engine bays and heavy-duty cleaning.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Marine Degreasers"
+    description="We're testing heavy-duty degreasers designed for marine engine bays, bilges, and tough grease removal."
+    category="reviews"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'Marine Cleaners Overview',
+        href: '/reviews/cleaners',
+        description: 'Browse our current selection of marine cleaner reviews'
+      },
+      {
+        title: 'Deep Cleaning Guides',
+        href: '/guides/deep-cleaning',
+        description: 'Learn advanced cleaning techniques for tough stains'
+      }
+    ]}
+  />
+</BaseLayout>

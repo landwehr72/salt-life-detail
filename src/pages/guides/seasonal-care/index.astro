@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Seasonal Marine Care Guides';
+const pageDescription = 'Coming soon: Comprehensive seasonal maintenance guides for year-round marine care.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Seasonal Marine Care"
+    description="We're developing comprehensive guides for seasonal boat care, from hurricane prep to winter storage and spring commissioning."
+    category="guides"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'All Maintenance Guides',
+        href: '/guides',
+        description: 'Browse our current collection of marine maintenance guides'
+      },
+      {
+        title: 'Basic Maintenance',
+        href: '/guides/basic-maintenance',
+        description: 'Start with routine maintenance fundamentals'
+      }
+    ]}
+  />
+</BaseLayout>

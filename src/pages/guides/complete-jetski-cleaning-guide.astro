@@ -1,0 +1,309 @@
+---
+// src/pages/guides/complete-jetski-cleaning-guide.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArticleSchema from "@/components/seo/ArticleSchema.astro";
+import FAQSchema from "@/components/seo/FAQSchema.astro";
+import FAQ from "@/components/marine/FAQ.astro";
+
+const guideData = {
+  title: "Complete Jetski Cleaning Guide",
+  description: "Step-by-step process for maintaining your jetski in saltwater conditions, from weekly rinses to monthly deep cleans.",
+  publishDate: "2024-12-15",
+  updateDate: "2024-12-15",
+  readTime: "15 min read",
+  difficulty: "Beginner",
+  category: "Basic Maintenance",
+  tags: ["jetski", "cleaning", "saltwater", "maintenance", "pwc"],
+  image: "/images/guides/jetski-cleaning-guide.jpg"
+};
+
+const faqData = [
+  {
+    question: "How often should I clean my jetski?",
+    answer: "Rinse with fresh water after every saltwater use. Deep clean weekly if used frequently, monthly for occasional use."
+  },
+  {
+    question: "Can I use car soap on my jetski?",
+    answer: "No, use marine-specific pH-neutral soaps like Starke Pure Clean that won't damage gelcoat or leave salt-attracting residues."
+  },
+  {
+    question: "What's the most important step in jetski maintenance?",
+    answer: "Fresh water rinsing immediately after use. Salt residue causes the most long-term damage to jetskis."
+  },
+  {
+    question: "Should I wax my jetski?",
+    answer: "Yes, apply marine wax or ceramic coating quarterly to protect against UV rays and make cleaning easier."
+  }
+];
+---
+
+<BaseLayout 
+  title={guideData.title}
+  description={guideData.description}
+  keywords="jetski cleaning, PWC maintenance, saltwater boat care, marine detailing guide"
+>
+  <FAQSchema faqs={faqData} slot="head" />
+  <ArticleSchema 
+    title={guideData.title}
+    description={guideData.description}
+    publishDate={guideData.publishDate}
+    updateDate={guideData.updateDate}
+    image={guideData.image}
+    category={guideData.category}
+    tags={guideData.tags}
+    readTime={guideData.readTime}
+    difficulty={guideData.difficulty}
+  slot="head" />
+
+  <!-- Guide Header -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-12">
+        <div class="flex justify-center items-center space-x-4 mb-6">
+          <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 font-medium">
+            {guideData.category}
+          </span>
+          <span class="text-sm text-gray-500 bg-gray-100 text-gray-700 px-3 py-1 font-medium">
+            {guideData.difficulty}
+          </span>
+          <span class="text-sm text-gray-500">
+            {guideData.readTime}
+          </span>
+        </div>
+        
+        <h1 class="text-5xl font-light text-gray-900 mb-6 tracking-tight">
+          {guideData.title}
+        </h1>
+        
+        <p class="text-xl text-gray-600 font-light leading-relaxed max-w-3xl mx-auto">
+          {guideData.description}
+        </p>
+      </div>
+
+      <!-- Hero Image Placeholder -->
+      <div class="aspect-[16/9] bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 mb-12 flex items-center justify-center">
+        <div class="text-center">
+          <div class="w-24 h-24 bg-white border border-gray-200 mx-auto mb-4 flex items-center justify-center">
+            <span class="text-4xl font-bold text-gray-800">J</span>
+          </div>
+          <span class="text-gray-600 font-medium">Jetski Cleaning Process</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide Content -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="prose prose-lg prose-gray max-w-none font-light leading-relaxed">
+        
+        <h2 class="text-3xl font-light text-gray-900 mb-6">Why Proper Jetski Cleaning Matters</h2>
+        
+        <p class="mb-6">
+          Jetskis face unique challenges in Southwest Florida's marine environment. Unlike larger boats, PWCs have more exposed surfaces and intricate water systems that trap salt. Without proper cleaning, salt crystallization leads to:
+        </p>
+        
+        <ul class="list-disc pl-6 mb-8 space-y-2">
+          <li>Corrosion of metal components and fittings</li>
+          <li>Gelcoat oxidation and fading</li>
+          <li>Clogged cooling systems reducing performance</li>
+          <li>Premature wear of seals and gaskets</li>
+        </ul>
+
+        <h2 class="text-3xl font-light text-gray-900 mb-6">Essential Products & Tools</h2>
+        
+        <div class="bg-gray-50 border border-gray-200 p-6 mb-8">
+          <h3 class="text-xl font-medium text-gray-900 mb-4">Recommended Products from Marine Detail Supply</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Cleaning Products:</h4>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• Starke Salt Clean (rinse additive)</li>
+                <li>• Starke Pure Clean Boat Soap</li>
+                <li>• Starke Ultra Clean SiO2 Soap (for coated surfaces)</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Tools & Accessories:</h4>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• Microfiber wash mitts</li>
+                <li>• Foam cannon or spray bottle</li>
+                <li>• Marine-safe brushes</li>
+                <li>• Chamois or waffle-weave towels</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="text-3xl font-light text-gray-900 mb-6">Step-by-Step Cleaning Process</h2>
+
+        <h3 class="text-2xl font-medium text-gray-900 mb-4">Step 1: Immediate Post-Ride Rinse</h3>
+        <p class="mb-4">
+          <strong>Time Required:</strong> 5 minutes<br>
+          <strong>Frequency:</strong> After every saltwater use
+        </p>
+        
+        <ol class="list-decimal pl-6 mb-6 space-y-2">
+          <li>Start the jetski and flush the cooling system with fresh water using a garden hose adapter</li>
+          <li>Run the engine for 30-60 seconds to clear salt from internal passages</li>
+          <li>Spray the entire exterior with Starke Salt Clean mixed with fresh water</li>
+          <li>Pay special attention to the pump area, steering components, and any metal fittings</li>
+          <li>Allow to air dry or towel dry the seat area</li>
+        </ol>
+
+        <div class="bg-gray-50 border border-gray-200 p-4 mb-6">
+          <p class="text-sm text-gray-800">
+            <strong>Pro Tip:</strong> Never skip this step! Salt damage occurs within hours of exposure, especially in Florida's heat and humidity.
+          </p>
+        </div>
+
+        <h3 class="text-2xl font-medium text-gray-900 mb-4">Step 2: Weekly Deep Clean</h3>
+        <p class="mb-4">
+          <strong>Time Required:</strong> 30-45 minutes<br>
+          <strong>Frequency:</strong> Weekly with regular use
+        </p>
+
+        <ol class="list-decimal pl-6 mb-6 space-y-3">
+          <li>
+            <strong>Pre-rinse:</strong> Thoroughly rinse with fresh water, using Starke Salt Clean for enhanced salt removal
+          </li>
+          <li>
+            <strong>Soap application:</strong> Mix Starke Pure Clean (1-2 oz per gallon) in a bucket or foam cannon
+          </li>
+          <li>
+            <strong>Washing:</strong> Work from top to bottom using a microfiber mitt. Clean the hull last to avoid transferring bottom grime
+          </li>
+          <li>
+            <strong>Detail areas:</strong> Use a soft brush for textured surfaces, intake grates, and around decals
+          </li>
+          <li>
+            <strong>Rinse thoroughly:</strong> Remove all soap residue, paying attention to crevices where soap can collect
+          </li>
+          <li>
+            <strong>Dry completely:</strong> Use a chamois or microfiber towels to prevent water spots
+          </li>
+        </ol>
+
+        <h3 class="text-2xl font-medium text-gray-900 mb-4">Step 3: Monthly Protection Application</h3>
+        <p class="mb-4">
+          <strong>Time Required:</strong> 60-90 minutes<br>
+          <strong>Frequency:</strong> Monthly or quarterly depending on use
+        </p>
+
+        <ol class="list-decimal pl-6 mb-6 space-y-2">
+          <li>Complete the weekly deep clean process</li>
+          <li>Apply marine wax or ceramic coating to all gelcoat surfaces</li>
+          <li>Treat vinyl seats with marine-specific protectant</li>
+          <li>Apply corrosion inhibitor to metal components</li>
+          <li>Check and clean the ride plate and pump for debris</li>
+        </ol>
+
+        <h2 class="text-3xl font-light text-gray-900 mb-6">Common Mistakes to Avoid</h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="border-l-4 border-gray-500 pl-4">
+            <h4 class="font-medium text-gray-900 mb-2">Using automotive products</h4>
+            <p class="text-gray-600 text-sm">
+              Car washes and waxes aren't formulated for marine environments and can leave residues that attract salt.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-gray-500 pl-4">
+            <h4 class="font-medium text-gray-900 mb-2">Pressure washing the engine bay</h4>
+            <p class="text-gray-600 text-sm">
+              High pressure can force water into electrical connections. Use gentle rinse pressure only.
+            </p>
+          </div>
+          
+          <div class="border-l-4 border-gray-500 pl-4">
+            <h4 class="font-medium text-gray-900 mb-2">Skipping the cooling system flush</h4>
+            <p class="text-gray-600 text-sm">
+              Internal salt buildup is the #1 cause of PWC cooling system failures in Florida.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="text-3xl font-light text-gray-900 mb-6">Seasonal Considerations</h2>
+
+        <h3 class="text-xl font-medium text-gray-900 mb-4">Hurricane Season (June - November)</h3>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li>Increase cleaning frequency due to higher humidity and rain</li>
+          <li>Apply extra protection before storm season</li>
+          <li>Clean immediately after any storm exposure</li>
+        </ul>
+
+        <h3 class="text-xl font-medium text-gray-900 mb-4">Dry Season (December - May)</h3>
+        <ul class="list-disc pl-6 mb-8 space-y-2">
+          <li>Focus on UV protection with quality marine wax</li>
+          <li>Clean more frequently during peak usage months</li>
+          <li>Pay attention to increased salt concentration during dry periods</li>
+        </ul>
+
+        <div class="bg-gray-50 border border-gray-200 p-6 mb-8">
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Pro Results Checklist</h3>
+          <ul class="text-sm text-gray-800 space-y-2">
+            <li>✓ No visible salt residue or water spots</li>
+            <li>✓ Gelcoat has uniform gloss without oxidation</li>
+            <li>✓ All metal fittings are corrosion-free</li>
+            <li>✓ Engine flushes clear water (no debris or discoloration)</li>
+            <li>✓ Vinyl surfaces are clean and protected</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-white">
+    <FAQ 
+      faqs={faqData}
+      title="Jetski Cleaning FAQs"
+      description="Common questions about jetski maintenance and cleaning in saltwater conditions."
+      style="default"
+    />
+  </section>
+
+  <!-- Related Content -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="text-3xl font-light text-gray-900 mb-8 text-center">Related Guides</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/guides/hurricane-season-preparation" class="bg-white border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+          <h3 class="font-medium text-gray-900 mb-2">Hurricane Season Prep</h3>
+          <p class="text-sm text-gray-600 font-light">Protect your PWC during storm season</p>
+        </a>
+        <a href="/reviews/starke-pure-clean-soap" class="bg-white border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+          <h3 class="font-medium text-gray-900 mb-2">Starke Pure Clean Review</h3>
+          <p class="text-sm text-gray-600 font-light">Our testing results on this premium soap</p>
+        </a>
+        <a href="/buying-guides/best-marine-soaps-2024" class="bg-white border border-gray-200 p-6 hover:border-gray-300 transition-colors">
+          <h3 class="font-medium text-gray-900 mb-2">Best Marine Soaps 2024</h3>
+          <p class="text-sm text-gray-600 font-light">Top-rated boat soaps tested in Florida</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-gray-900">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl font-light text-white mb-6">Get More Expert Guides</h2>
+      <p class="text-lg text-gray-300 mb-8 font-light">
+        Subscribe for detailed maintenance guides and product testing updates.
+      </p>
+      <div class="max-w-md mx-auto">
+        <div class="flex border border-gray-700">
+          <input 
+            type="email" 
+            placeholder="Your email address" 
+            class="flex-1 px-4 py-3 bg-gray-800 text-white border-none focus:outline-none font-light placeholder-gray-400"
+          >
+          <button class="bg-gray-900 text-white px-6 py-3 font-medium hover:bg-gray-700 transition-colors">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

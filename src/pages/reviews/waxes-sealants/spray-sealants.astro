@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ComingSoon from '../../../components/marine/ComingSoon.astro';
+import BaseHead from '../../../layouts/BaseHead.astro';
+
+const pageTitle = 'Marine Spray Sealants Reviews';
+const pageDescription = 'Coming soon: Reviews of quick-application spray sealants for marine maintenance.';
+---
+
+<BaseLayout>
+  <BaseHead
+    title={pageTitle}
+    description={pageDescription}
+    slot="head"
+  />
+  
+  <ComingSoon
+    title="Marine Spray Sealants"
+    description="We're testing easy-to-apply spray sealants perfect for quick touch-ups and regular maintenance."
+    category="reviews"
+    estimatedDate="Coming in Q3 2025"
+    relatedPages={[
+      {
+        title: 'Waxes & Sealants Overview',
+        href: '/reviews/waxes-sealants',
+        description: 'Browse our current protection product reviews'
+      },
+      {
+        title: 'Basic Maintenance Guide',
+        href: '/guides/basic-maintenance',
+        description: 'Learn quick maintenance routines'
+      }
+    ]}
+  />
+</BaseLayout>
