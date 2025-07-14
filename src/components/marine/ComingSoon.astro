@@ -1,10 +1,14 @@
 ---
 // src/components/marine/ComingSoon.astro
 export interface Props {
-  title: string;
+  title?: string;
+  category?: string;
   description?: string;
-  category?: 'reviews' | 'guides' | 'buying-guides' | 'local-services';
+  expectedLaunch?: string;
   estimatedDate?: string;
+  features?: string[];
+  backLink?: string;
+  backText?: string;
   relatedPages?: Array<{
     title: string;
     href: string;
@@ -15,12 +19,28 @@ export interface Props {
 
 const {
   title,
+  category: categoryProp,
   description = 'We\'re working hard to bring you comprehensive content in this section.',
-  category = 'reviews',
+  expectedLaunch,
   estimatedDate,
+  features = [],
+  backLink,
+  backText,
   relatedPages = [],
   showNewsletter = true
 } = Astro.props;
+
+// Handle both old and new usage patterns
+const finalTitle = title || categoryProp || 'Coming Soon';
+const finalDescription = description;
+
+// Determine category type for styling
+let categoryType = 'reviews';
+if (typeof categoryProp === 'string') {
+  if (categoryProp.toLowerCase().includes('guide')) categoryType = 'guides';
+  else if (categoryProp.toLowerCase().includes('buying')) categoryType = 'buying-guides';
+  else if (categoryProp.toLowerCase().includes('service') || categoryProp.toLowerCase().includes('local')) categoryType = 'local-services';
+}
 
 const categoryInfo = {
   reviews: {
@@ -41,7 +61,7 @@ const categoryInfo = {
   }
 };
 
-const info = categoryInfo[category];
+const info = categoryInfo[categoryType];
 ---
 
 <section class="coming-soon-section py-16 bg-gray-50">
@@ -55,17 +75,28 @@ const info = categoryInfo[category];
 
     <!-- Main Content -->
     <h1 class="text-4xl font-light text-gray-900 mb-6">
-      {title}
+      {finalTitle}
     </h1>
     
     <p class="text-xl text-gray-600 font-light max-w-2xl mx-auto mb-8">
-      {description || info.defaultDescription}
+      {finalDescription || info.defaultDescription}
     </p>
 
-    {estimatedDate && (
+    {(expectedLaunch || estimatedDate) && (
       <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8 max-w-md mx-auto">
         <h3 class="text-lg font-medium text-gray-900 mb-2">Expected Launch</h3>
-        <p class="text-gray-800 font-light">{estimatedDate}</p>
+        <p class="text-gray-800 font-light">{expectedLaunch || estimatedDate}</p>
+      </div>
+    )}
+
+    {features.length > 0 && (
+      <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8 max-w-md mx-auto">
+        <h3 class="text-lg font-medium text-gray-900 mb-4">What's Coming</h3>
+        <ul class="space-y-2 text-sm text-gray-600">
+          {features.map((feature) => (
+            <li>• {feature}</li>
+          ))}
+        </ul>
       </div>
     )}
 
@@ -128,15 +159,27 @@ const info = categoryInfo[category];
 
     <!-- Back Navigation -->
     <div class="mt-12">
-      <a 
-        href="javascript:history.back()"
-        class="inline-flex items-center text-gray-600 hover:text-gray-900 font-light transition-colors"
-      >
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-        Go Back
-      </a>
+      {backLink && backText ? (
+        <a 
+          href={backLink}
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 font-light transition-colors"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          {backText}
+        </a>
+      ) : (
+        <a 
+          href="javascript:history.back()"
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 font-light transition-colors"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Go Back
+        </a>
+      )}
       <span class="mx-4 text-gray-400">•</span>
       <a 
         href="/"
