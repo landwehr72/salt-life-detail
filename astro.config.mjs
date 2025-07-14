@@ -19,20 +19,6 @@ export default defineConfig({
       // Generate separate sitemaps for different content types
       entryLimit: 45000,
       
-      // Custom sitemap entries for important pages
-      customPages: [
-        'https://saltlifedetail.com/',
-        'https://saltlifedetail.com/reviews',
-        'https://saltlifedetail.com/guides', 
-        'https://saltlifedetail.com/buying-guides',
-        'https://saltlifedetail.com/local-services',
-        'https://saltlifedetail.com/about',
-        'https://saltlifedetail.com/contact',
-        'https://saltlifedetail.com/affiliate-disclosure',
-        'https://saltlifedetail.com/privacy-policy',
-        'https://saltlifedetail.com/terms-of-service'
-      ],
-      
       // Filter out admin pages and unnecessary URLs
       filter: (page) => {
         return !page.includes('/admin/') && 
@@ -47,7 +33,7 @@ export default defineConfig({
       // Custom serialization for different page types
       serialize(item) {
         // Homepage - highest priority
-        if (item.url === '/') {
+        if (item.url === '/' || item.url === 'https://saltlifedetail.com/') {
           item.priority = 1.0;
           item.changefreq = 'daily';
         }
